@@ -88,6 +88,10 @@ def generate_data():
                 idx = FEATURES.index(feat)
                 base_vector[idx] += change
                 
+        # Agregar pequeña variación única a cada carrera para evitar empates (espejismos de clúster)
+        jitter = np.random.uniform(-3, 3, size=len(FEATURES))
+        base_vector = base_vector + jitter
+        
         # Asegurar límites 0-100
         base_vector = np.clip(base_vector, 0, 100)
         
