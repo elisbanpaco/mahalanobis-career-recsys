@@ -9,3 +9,27 @@
 # Mac
 .AppleDouble
 .LSOverride
+
+# Python (Since api and research are here)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# AI Agents, CLI Assistants & Copilots
+.gemini/
+.cursor/
+.cursorrules
+AGENTS.md
+CLAUDE.md
+.windsurfrules
+.cline/
+.clinerules
+.aider/
+.aider*
+.ai/
+.agents/
+skills-lock.json
