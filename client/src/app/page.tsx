@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ArrowLeft, Compass, Stars, Navigation } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 
 type AppState = "START" | "TEST" | "CALCULATING" | "RESULTS";
 
@@ -11,7 +11,6 @@ interface CareerRecommendation {
   mahalanobis_dist: number;
 }
 
-// METODO DE JUICIO SITUACIONAL
 const DIMENSIONS = [
   { 
     id: 'math', 
@@ -148,66 +147,64 @@ export default function Home() {
     const newAnswers = { ...answers, [currentDim]: value };
     setAnswers(newAnswers);
 
-    if (currentIndex < DIMENSIONS.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      // Finished
-      setAppState("CALCULATING");
-      try {
-        const res = await fetch("http://localhost:8000/recommend", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newAnswers)
-        });
-        const data = await res.json();
-        setResults(data.top_careers);
-        // Pequeño delay para que la animación se disfrute
-        setTimeout(() => setAppState("RESULTS"), 2500);
-      } catch (err) {
-        console.error(err);
-        alert("Error de conexión con el núcleo Mahalanobis.");
-        setAppState("START");
+    // Pequeño delay para mostrar la selección limpia antes de avanzar
+    setTimeout(async () => {
+      if (currentIndex < DIMENSIONS.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        setAppState("CALCULATING");
+        try {
+          const res = await fetch("http://localhost:8000/recommend", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newAnswers)
+          });
+          const data = await res.json();
+          setResults(data.top_careers);
+          setTimeout(() => setAppState("RESULTS"), 1500);
+        } catch (err) {
+          console.error(err);
+          alert("Error de conexión con el servidor.");
+          setAppState("START");
+        }
       }
-    }
+    }, 400);
   };
 
   return (
     <main className="container">
-      {/* Progress Bar during test */}
-      {appState === "TEST" && (
-        <div className="progress-bar">
-          <div 
-            className="progress-fill" 
-            style={{ width: `${(currentIndex / DIMENSIONS.length) * 100}%` }} 
-          />
-        </div>
-      )}
-
       {/* START STATE */}
       {appState === "START" && (
         <div className="center-stage">
-          <Compass size={64} color="var(--accent-primary)" style={{ marginBottom: '2rem' }} />
-          <h1>Encuentra tu verdadera órbita.</h1>
-          <p className="subtitle">
-            Un test vocacional distinto, potenciado por Inteligencia Artificial y el modelo matemático de Mahalanobis para recomendarte la carrera ideal en la UNAP. No evaluamos solo lo que sabes, evaluamos cómo piensas y actúas.
-          </p>
-          <button className="btn-primary" onClick={handleStart}>
-            Iniciar Calibración <ArrowRight size={20} style={{ display: 'inline', marginLeft: '8px', verticalAlign: 'middle' }} />
-          </button>
+          <div className="card" style={{ textAlign: 'center' }}>
+            <h1 className="question-text" style={{ fontSize: '2rem' }}>Evaluación de Carrera UNAP</h1>
+            <p className="subtitle">
+              Descubre qué carreras de la Universidad Nacional del Altiplano se alinean con tus verdaderos intereses y comportamiento, basado en modelos psicométricos avanzados.
+            </p>
+            <button className="btn-primary" onClick={handleStart} style={{ maxWidth: '300px', margin: '0 auto' }}>
+              Comenzar Evaluación <ArrowRight size={20} />
+            </button>
+          </div>
         </div>
       )}
 
       {/* TEST STATE */}
       {appState === "TEST" && (
         <div className="center-stage">
-          <div className="glass-panel">
-            <span className="mono-label">Situación {currentIndex + 1} / {DIMENSIONS.length}</span>
-            <div className="question-header">
-              <h2 className="question-text">&quot;{DIMENSIONS[currentIndex].question}&quot;</h2>
+          <div className="progress-container">
+            <span className="progress-text">Pregunta {currentIndex + 1} de {DIMENSIONS.length}</span>
+            <div className="progress-bar">
+              <div 
+                className="progress-fill" 
+                style={{ width: `${((currentIndex + 1) / DIMENSIONS.length) * 100}%` }} 
+              />
             </div>
+          </div>
+
+          <div className="card">
+            <h2 className="question-text">{DIMENSIONS[currentIndex].question}</h2>
             
-            {/* Opciones adaptadas a Juicio Situacional */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
+            <div className="options-container">
               {DIMENSIONS[currentIndex].options.map((opt, index) => {
                 const currentDimId = DIMENSIONS[currentIndex].id;
                 const isSelected = answers[currentDimId] === opt.value;
@@ -215,44 +212,23 @@ export default function Home() {
                 return (
                   <button 
                     key={index} 
-                    className="option-btn"
+                    className={`option-btn ${isSelected ? 'selected' : ''}`}
                     onClick={() => handleAnswer(opt.value)}
-                    style={{ 
-                      textAlign: 'left', 
-                      alignItems: 'flex-start',
-                      borderColor: isSelected ? 'var(--accent-secondary)' : 'var(--border-subtle)',
-                      background: isSelected ? 'var(--bg-panel-hover)' : 'var(--bg-panel)'
-                    }}
                   >
                     <span>{opt.label}</span>
+                    {isSelected && <Check size={20} color="var(--primary)" />}
                   </button>
                 );
               })}
             </div>
 
-            {/* Botón para regresar a la pregunta anterior */}
             {currentIndex > 0 && (
-              <div style={{ marginTop: '2rem', textAlign: 'left' }}>
-                <button 
-                  onClick={() => setCurrentIndex(currentIndex - 1)}
-                  style={{ 
-                    background: 'transparent', 
-                    border: 'none', 
-                    color: 'var(--text-secondary)', 
-                    cursor: 'pointer', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 'var(--step--1)',
-                    transition: 'color 0.2s ease'
-                  }}
-                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
-                  onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >
-                  <ArrowLeft size={16} /> Pregunta anterior
-                </button>
-              </div>
+              <button 
+                className="btn-secondary"
+                onClick={() => setCurrentIndex(currentIndex - 1)}
+              >
+                <ArrowLeft size={16} /> Volver
+              </button>
             )}
           </div>
         </div>
@@ -260,59 +236,49 @@ export default function Home() {
 
       {/* CALCULATING STATE */}
       {appState === "CALCULATING" && (
-        <div className="center-stage">
-          <div className="orbit-container">
-            <div className="orbit-ring"></div>
-            <div className="orbit-ring"></div>
-            <div className="orbit-ring"></div>
-            <div className="core"></div>
-          </div>
-          <h2>Calculando Covarianza</h2>
-          <p className="subtitle">Mapeando tu comportamiento contra las 38 órbitas de la UNAP...</p>
+        <div className="center-stage" style={{ textAlign: 'center' }}>
+          <div className="spinner"></div>
+          <h2 className="question-text">Analizando tu perfil...</h2>
+          <p className="subtitle">Calculando compatibilidad con 38 programas académicos.</p>
         </div>
       )}
 
       {/* RESULTS STATE */}
       {appState === "RESULTS" && (
-        <div style={{ paddingTop: '4rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <Stars size={48} color="var(--accent-secondary)" style={{ marginBottom: '1rem' }} />
-            <h1>Tu Destino Académico</h1>
-            <p className="subtitle" style={{ margin: '1rem auto 0 auto' }}>
-              Estas son las carreras donde tu perfil encaja naturalmente, considerando tus comportamientos reales frente a las tendencias de la UNAP.
+        <div style={{ paddingTop: '2rem' }} className="center-stage">
+          <div className="results-header">
+            <h1>Tus Mejores Opciones</h1>
+            <p className="subtitle">
+              Basado en tus respuestas, tu perfil se alinea fuertemente con los siguientes programas académicos.
             </p>
           </div>
 
-          <div className="results-grid">
-            <div className="glass-panel" style={{ height: 'fit-content' }}>
-              <h3 style={{ marginBottom: '1rem' }}><Navigation size={24} style={{ display:'inline', marginRight:'8px' }}/>El Espejismo Evitado</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Si hubiéramos usado un test tradicional, probablemente habrías obtenido resultados sesgados por tu autopercepción. 
-                El algoritmo de <strong>Mahalanobis</strong> ha leído entre líneas, notando cómo tus decisiones prácticas compensan ciertas áreas para recomendarte ecosistemas donde brillarás.
-              </p>
-              <button className="btn-primary" onClick={() => {
+          <div className="card" style={{ padding: '2rem' }}>
+            {results.map((r, i) => (
+              <div key={i} className="career-card">
+                <div className="career-info">
+                  <span className="rank-badge">Opción {i + 1}</span>
+                  <h3>{r.career}</h3>
+                </div>
+                <div className="career-score">
+                  {r.match_percentage}%
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <button 
+              className="btn-secondary" 
+              onClick={() => {
                 setAppState("START");
                 setCurrentIndex(0);
                 setAnswers({});
-              }} style={{ marginTop: '2rem', width: '100%' }}>
-                Recalibrar Perfil
-              </button>
-            </div>
-
-            <div>
-              <span className="mono-label" style={{ display: 'block', marginBottom: '1rem' }}>TOP 5 ÓRBITAS COMPATIBLES</span>
-              {results.map((r, i) => (
-                <div key={i} className="career-card" style={{ animationDelay: `${i * 0.1}s`, animation: 'fadeUp 0.5s forwards', opacity: 0 }}>
-                  <div className="career-info">
-                    <span className="mono-label">#{i + 1}</span>
-                    <h3>{r.career}</h3>
-                  </div>
-                  <div className="career-score">
-                    {r.match_percentage}%
-                  </div>
-                </div>
-              ))}
-            </div>
+              }}
+              style={{ margin: '0 auto' }}
+            >
+              Reiniciar evaluación
+            </button>
           </div>
         </div>
       )}
