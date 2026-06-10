@@ -1,7 +1,40 @@
-career,math,physics,history,literature,art
-Ingeniería Civil,18,17,12,10,9
-Derecho,12,10,18,18,12
-Bellas Artes,10,9,14,15,19
-Medicina,16,15,15,14,10
-Ciencias de la Computación,19,16,11,10,12
-Arquitectura,15,14,13,12,18
+career,math,science,literature,r_realistic,i_investigative,a_artistic,s_social,e_enterprising,c_conventional,strong_leadership,strong_practical,strong_tech
+Administración,70,40,70,30,60,30,70,90,85,85,30,50
+Antropología,40,40,85,20,75,60,85,50,40,60,20,30
+Arquitectura y Urbanismo,85,80,50,60,85,70,30,50,60,50,70,85
+Arte: Especialidad de Artes Plásticas,40,40,75,30,50,85,90,40,40,60,40,30
+Arte: Especialidad de Música,40,40,75,30,50,85,90,40,40,60,40,30
+Ciencias Biológicas,60,90,60,40,85,30,80,40,50,50,70,40
+Ciencias Contables,70,40,70,30,60,30,70,90,85,85,30,50
+Ciencias de la Comunicación Social,40,40,85,20,75,60,85,50,40,60,20,30
+Ciencias Físico Matemáticas,85,80,50,70,85,30,30,50,60,50,70,85
+Derecho,40,40,85,20,75,60,85,65,40,80,20,30
+Educación Física,40,40,75,30,50,85,90,40,40,60,40,30
+Educación Inicial,40,40,75,30,50,85,90,40,40,60,40,30
+Educación Primaria,40,40,75,30,50,85,90,40,40,60,40,30
+Educación Secundaria,40,40,75,30,50,85,90,40,40,60,40,30
+Enfermería,60,90,60,40,85,30,80,40,50,50,70,40
+Ingeniería Agrícola,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Agroindustrial,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Agronómica,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Civil,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería de Inteligencia Artificial y Ciencia de Datos,95,80,50,50,85,30,30,50,60,50,70,100
+Ingeniería de Minas,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería de Sistemas,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería de Telecomunicaciones,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Económica,70,40,70,30,60,30,70,90,85,85,30,50
+Ingeniería Electrónica,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Empresarial,70,40,70,30,60,30,70,90,85,85,30,50
+Ingeniería Estadística e Informática,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Geológica,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Mecánica Eléctrica,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Metalúrgica,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Química,85,80,50,70,85,30,30,50,60,50,70,85
+Ingeniería Topográfica y Agrimensura,85,80,50,70,85,30,30,50,60,50,70,85
+Medicina Humana,60,100,60,40,95,30,80,40,50,50,70,40
+Medicina Veterinaria y Zootecnia,60,90,60,40,85,30,80,40,50,50,70,40
+Nutrición Humana,60,90,60,40,85,30,80,40,50,50,70,40
+Odontología,60,90,60,40,85,30,80,40,50,50,70,40
+Sociología,40,40,85,20,75,60,85,50,40,60,20,30
+Trabajo Social,40,40,85,20,75,60,85,50,40,60,20,30
+Turismo,40,40,85,20,75,60,85,50,40,60,20,30
