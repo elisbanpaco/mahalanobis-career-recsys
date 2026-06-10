@@ -9,19 +9,28 @@ class CareerRecommenderMahalanobis:
         self.careers_df = careers_data.copy()
         self.feature_cols = feature_cols
 
-        # Calculamos la matriz de covarianza usando los datos poblacionales
-        self.cov_matrix = self.students_df[feature_cols].cov().values
-
-        # Inversa de la matriz de covarianza para el cálculo de distancias
-        self.inv_cov_matrix = pinv(self.cov_matrix)
+        # Calculamos la matriz de covarianza inversa por cada carrera (Clasificador Verdadero)
+        self.career_inv_covs = {}
+        global_cov = pinv(self.students_df[feature_cols].cov().values)
+        
+        for career in self.careers_df['career'].unique():
+            career_data = self.students_df[self.students_df['career'] == career]
+            if len(career_data) > 10:
+                cov = career_data[feature_cols].cov().values
+                self.career_inv_covs[career] = pinv(cov)
+            else:
+                self.career_inv_covs[career] = global_cov
 
     def recommend(self, student_profile_dict, top_n=5):
         user_vector = np.array([student_profile_dict[col] for col in self.feature_cols])
         distances = []
 
         for index, row in self.careers_df.iterrows():
+            career_name = row['career']
             career_vector = row[self.feature_cols].values
-            dist = mahalanobis(user_vector, career_vector, self.inv_cov_matrix)
+            inv_cov = self.career_inv_covs.get(career_name)
+            
+            dist = mahalanobis(user_vector, career_vector, inv_cov)
             distances.append(dist)
 
         results = self.careers_df.copy()
