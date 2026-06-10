@@ -147,7 +147,6 @@ export default function Home() {
     const newAnswers = { ...answers, [currentDim]: value };
     setAnswers(newAnswers);
 
-    // Pequeño delay para mostrar la selección limpia antes de avanzar
     setTimeout(async () => {
       if (currentIndex < DIMENSIONS.length - 1) {
         setCurrentIndex(currentIndex + 1);
@@ -172,16 +171,19 @@ export default function Home() {
   };
 
   return (
-    <main className="container">
+    <main className="max-w-3xl mx-auto px-6 w-full font-sans text-gray-900 bg-gray-50 min-h-screen">
       {/* START STATE */}
       {appState === "START" && (
-        <div className="center-stage">
-          <div className="card" style={{ textAlign: 'center' }}>
-            <h1 className="question-text" style={{ fontSize: '2rem' }}>Evaluación de Carrera UNAP</h1>
-            <p className="subtitle">
+        <div className="flex flex-col min-h-[80vh] justify-center animate-fade-in py-12">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm text-center">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">Evaluación de Carrera UNAP</h1>
+            <p className="text-lg text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto">
               Descubre qué carreras de la Universidad Nacional del Altiplano se alinean con tus verdaderos intereses y comportamiento, basado en modelos psicométricos avanzados.
             </p>
-            <button className="btn-primary" onClick={handleStart} style={{ maxWidth: '300px', margin: '0 auto' }}>
+            <button 
+              className="bg-blue-600 text-white font-medium py-3 px-8 rounded-xl transition-all duration-200 hover:bg-blue-700 hover:shadow-md mx-auto flex items-center justify-center gap-2 w-full sm:w-auto"
+              onClick={handleStart}
+            >
               Comenzar Evaluación <ArrowRight size={20} />
             </button>
           </div>
@@ -190,21 +192,26 @@ export default function Home() {
 
       {/* TEST STATE */}
       {appState === "TEST" && (
-        <div className="center-stage">
-          <div className="progress-container">
-            <span className="progress-text">Pregunta {currentIndex + 1} de {DIMENSIONS.length}</span>
-            <div className="progress-bar">
+        <div className="flex flex-col min-h-[80vh] justify-center animate-fade-in py-12">
+          
+          <div className="mb-8">
+            <span className="text-sm text-gray-500 font-bold tracking-wider mb-3 block uppercase">
+              Pregunta {currentIndex + 1} de {DIMENSIONS.length}
+            </span>
+            <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className="progress-fill" 
+                className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-out" 
                 style={{ width: `${((currentIndex + 1) / DIMENSIONS.length) * 100}%` }} 
               />
             </div>
           </div>
 
-          <div className="card">
-            <h2 className="question-text">{DIMENSIONS[currentIndex].question}</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-10 leading-snug text-center">
+              {DIMENSIONS[currentIndex].question}
+            </h2>
             
-            <div className="options-container">
+            <div className="flex flex-col gap-4">
               {DIMENSIONS[currentIndex].options.map((opt, index) => {
                 const currentDimId = DIMENSIONS[currentIndex].id;
                 const isSelected = answers[currentDimId] === opt.value;
@@ -212,11 +219,15 @@ export default function Home() {
                 return (
                   <button 
                     key={index} 
-                    className={`option-btn ${isSelected ? 'selected' : ''}`}
+                    className={`w-full text-left bg-white border p-5 rounded-xl text-lg transition-all duration-200 flex items-center justify-between group
+                      ${isSelected 
+                        ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-600 text-blue-900' 
+                        : 'border-gray-200 text-gray-800 hover:bg-gray-50 hover:border-gray-300'
+                      }`}
                     onClick={() => handleAnswer(opt.value)}
                   >
                     <span>{opt.label}</span>
-                    {isSelected && <Check size={20} color="var(--primary)" />}
+                    {isSelected && <Check size={24} className="text-blue-600 shrink-0 ml-4" />}
                   </button>
                 );
               })}
@@ -224,7 +235,7 @@ export default function Home() {
 
             {currentIndex > 0 && (
               <button 
-                className="btn-secondary"
+                className="mt-8 flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors bg-transparent border-none cursor-pointer"
                 onClick={() => setCurrentIndex(currentIndex - 1)}
               >
                 <ArrowLeft size={16} /> Volver
@@ -236,46 +247,47 @@ export default function Home() {
 
       {/* CALCULATING STATE */}
       {appState === "CALCULATING" && (
-        <div className="center-stage" style={{ textAlign: 'center' }}>
-          <div className="spinner"></div>
-          <h2 className="question-text">Analizando tu perfil...</h2>
-          <p className="subtitle">Calculando compatibilidad con 38 programas académicos.</p>
+        <div className="flex flex-col min-h-[80vh] justify-center items-center animate-fade-in text-center py-12">
+          <div className="border-4 border-gray-100 border-t-blue-600 rounded-full w-12 h-12 animate-spin-slow mb-6"></div>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Analizando tu perfil...</h2>
+          <p className="text-lg text-gray-500">Calculando compatibilidad con 38 programas académicos.</p>
         </div>
       )}
 
       {/* RESULTS STATE */}
       {appState === "RESULTS" && (
-        <div style={{ paddingTop: '2rem' }} className="center-stage">
-          <div className="results-header">
-            <h1>Tus Mejores Opciones</h1>
-            <p className="subtitle">
-              Basado en tus respuestas, tu perfil se alinea fuertemente con los siguientes programas académicos.
+        <div className="py-16 animate-fade-in">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">Tus Mejores Opciones</h1>
+            <p className="text-lg text-gray-500 max-w-xl mx-auto">
+              Basado en tus respuestas, tu perfil se alinea fuertemente con los siguientes programas académicos de la UNAP.
             </p>
           </div>
 
-          <div className="card" style={{ padding: '2rem' }}>
-            {results.map((r, i) => (
-              <div key={i} className="career-card">
-                <div className="career-info">
-                  <span className="rank-badge">Opción {i + 1}</span>
-                  <h3>{r.career}</h3>
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 shadow-sm mb-10">
+            <div className="flex flex-col gap-4">
+              {results.map((r, i) => (
+                <div key={i} className="flex items-center justify-between p-5 border border-gray-100 bg-gray-50/50 rounded-xl hover:border-gray-200 transition-colors">
+                  <div>
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Opción {i + 1}</span>
+                    <h3 className="text-xl font-semibold text-gray-900">{r.career}</h3>
+                  </div>
+                  <div className="text-2xl font-bold text-blue-600">
+                    {r.match_percentage}%
+                  </div>
                 </div>
-                <div className="career-score">
-                  {r.match_percentage}%
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <div className="text-center">
             <button 
-              className="btn-secondary" 
+              className="text-gray-500 hover:text-gray-900 font-medium transition-colors bg-transparent border-none cursor-pointer underline underline-offset-4"
               onClick={() => {
                 setAppState("START");
                 setCurrentIndex(0);
                 setAnswers({});
               }}
-              style={{ margin: '0 auto' }}
             >
               Reiniciar evaluación
             </button>
