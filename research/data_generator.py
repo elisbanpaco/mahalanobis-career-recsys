@@ -1,136 +1,119 @@
 import pandas as pd
-import numpy as np
 import os
-import json
 
-# Fijamos la semilla para reproducibilidad
-np.random.seed(42)
-
-# 12 Dimensiones del Modelo Híbrido
+# Las 10 áreas curriculares de la EBR + 6 Competencias Transversales (O*NET + EBR)
 FEATURES = [
-    'math', 'science', 'literature', # Aptitudes
-    'r_realistic', 'i_investigative', 'a_artistic', 's_social', 'e_enterprising', 'c_conventional', # RIASEC
-    'strong_leadership', 'strong_practical', 'strong_tech' # Strong Interest
+    # EBR
+    'ebr_matematica', 'ebr_comunicacion', 'ebr_ciencia_tecnologia', 
+    'ebr_ciencias_sociales', 'ebr_dpcc', 'ebr_ingles', 'ebr_ept', 
+    'ebr_arte_cultura', 'ebr_educacion_fisica', 'ebr_religion',
+    
+    # Transversales (EBR 28 y 29 / O*NET)
+    'transversal_tic', # Interacting with Computers
+    'transversal_autonomia', # Active Learning
+    'transversal_resolucion_problemas', # Complex Problem Solving
+    'transversal_pensamiento_critico', # Critical Thinking
+    'transversal_percepcion_social', # Social Perceptiveness
+    'transversal_toma_decisiones' # Judgment and Decision Making
 ]
 
-# Base Profiles por Área [math, sci, lit, R, I, A, S, E, C, Ldr, Prac, Tech]
 PROFILES = {
-    'ENGINEERING': np.array([85, 80, 50,  70, 85, 30, 30, 50, 60,  50, 70, 85]),
-    'HEALTH':      np.array([60, 90, 60,  40, 85, 30, 80, 40, 50,  50, 70, 40]),
-    'SOCIAL':      np.array([40, 40, 85,  20, 75, 60, 85, 50, 40,  60, 20, 30]),
-    'BUSINESS':    np.array([70, 40, 70,  30, 60, 30, 70, 90, 85,  85, 30, 50]),
-    'ART_EDU':     np.array([40, 40, 75,  30, 50, 85, 90, 40, 40,  60, 40, 30])
+    'ENGINEERING': {
+        'ebr_matematica': 85, 'ebr_comunicacion': 50, 'ebr_ciencia_tecnologia': 80, 
+        'ebr_ciencias_sociales': 40, 'ebr_dpcc': 50, 'ebr_ingles': 60, 'ebr_ept': 70, 
+        'ebr_arte_cultura': 40, 'ebr_educacion_fisica': 50, 'ebr_religion': 50,
+        'transversal_tic': 85, 'transversal_autonomia': 70,
+        'transversal_resolucion_problemas': 85, 'transversal_pensamiento_critico': 80,
+        'transversal_percepcion_social': 50, 'transversal_toma_decisiones': 70
+    },
+    'HEALTH': {
+        'ebr_matematica': 60, 'ebr_comunicacion': 60, 'ebr_ciencia_tecnologia': 90, 
+        'ebr_ciencias_sociales': 60, 'ebr_dpcc': 70, 'ebr_ingles': 60, 'ebr_ept': 50, 
+        'ebr_arte_cultura': 40, 'ebr_educacion_fisica': 60, 'ebr_religion': 60,
+        'transversal_tic': 60, 'transversal_autonomia': 80,
+        'transversal_resolucion_problemas': 80, 'transversal_pensamiento_critico': 85,
+        'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 85
+    },
+    'SOCIAL': {
+        'ebr_matematica': 40, 'ebr_comunicacion': 85, 'ebr_ciencia_tecnologia': 40, 
+        'ebr_ciencias_sociales': 90, 'ebr_dpcc': 85, 'ebr_ingles': 70, 'ebr_ept': 40, 
+        'ebr_arte_cultura': 60, 'ebr_educacion_fisica': 50, 'ebr_religion': 60,
+        'transversal_tic': 55, 'transversal_autonomia': 75,
+        'transversal_resolucion_problemas': 65, 'transversal_pensamiento_critico': 80,
+        'transversal_percepcion_social': 90, 'transversal_toma_decisiones': 75
+    },
+    'BUSINESS': {
+        'ebr_matematica': 70, 'ebr_comunicacion': 70, 'ebr_ciencia_tecnologia': 40, 
+        'ebr_ciencias_sociales': 70, 'ebr_dpcc': 70, 'ebr_ingles': 80, 'ebr_ept': 80, 
+        'ebr_arte_cultura': 40, 'ebr_educacion_fisica': 50, 'ebr_religion': 50,
+        'transversal_tic': 70, 'transversal_autonomia': 75,
+        'transversal_resolucion_problemas': 75, 'transversal_pensamiento_critico': 75,
+        'transversal_percepcion_social': 70, 'transversal_toma_decisiones': 85
+    },
+    'ART_EDU': {
+        'ebr_matematica': 40, 'ebr_comunicacion': 75, 'ebr_ciencia_tecnologia': 40, 
+        'ebr_ciencias_sociales': 75, 'ebr_dpcc': 70, 'ebr_ingles': 60, 'ebr_ept': 60, 
+        'ebr_arte_cultura': 90, 'ebr_educacion_fisica': 80, 'ebr_religion': 60,
+        'transversal_tic': 60, 'transversal_autonomia': 70,
+        'transversal_resolucion_problemas': 60, 'transversal_pensamiento_critico': 70,
+        'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 65
+    }
 }
 
-# Clasificación de las 38 Carreras de la UNAP
 CAREERS_MAPPING = {
-    'Administración': 'BUSINESS',
-    'Antropología': 'SOCIAL',
-    'Arquitectura y Urbanismo': 'ENGINEERING', # Más artístico luego
-    'Arte: Especialidad de Artes Plásticas': 'ART_EDU',
-    'Arte: Especialidad de Música': 'ART_EDU',
-    'Ciencias Biológicas': 'HEALTH',
-    'Ciencias Contables': 'BUSINESS',
-    'Ciencias de la Comunicación Social': 'SOCIAL',
-    'Ciencias Físico Matemáticas': 'ENGINEERING',
-    'Derecho': 'SOCIAL',
-    'Educación Física': 'ART_EDU',
-    'Educación Inicial': 'ART_EDU',
-    'Educación Primaria': 'ART_EDU',
-    'Educación Secundaria': 'ART_EDU',
-    'Enfermería': 'HEALTH',
-    'Ingeniería Agrícola': 'ENGINEERING',
-    'Ingeniería Agroindustrial': 'ENGINEERING',
-    'Ingeniería Agronómica': 'ENGINEERING',
-    'Ingeniería Civil': 'ENGINEERING',
-    'Ingeniería de Inteligencia Artificial y Ciencia de Datos': 'ENGINEERING',
-    'Ingeniería de Minas': 'ENGINEERING',
-    'Ingeniería de Sistemas': 'ENGINEERING',
-    'Ingeniería de Telecomunicaciones': 'ENGINEERING',
-    'Ingeniería Económica': 'BUSINESS',
-    'Ingeniería Electrónica': 'ENGINEERING',
-    'Ingeniería Empresarial': 'BUSINESS',
-    'Ingeniería Estadística e Informática': 'ENGINEERING',
-    'Ingeniería Geológica': 'ENGINEERING',
-    'Ingeniería Mecánica Eléctrica': 'ENGINEERING',
-    'Ingeniería Metalúrgica': 'ENGINEERING',
-    'Ingeniería Química': 'ENGINEERING',
-    'Ingeniería Topográfica y Agrimensura': 'ENGINEERING',
-    'Medicina Humana': 'HEALTH',
-    'Medicina Veterinaria y Zootecnia': 'HEALTH',
-    'Nutrición Humana': 'HEALTH',
-    'Odontología': 'HEALTH',
-    'Sociología': 'SOCIAL',
-    'Trabajo Social': 'SOCIAL',
-    'Turismo': 'SOCIAL'
+    'Administración': 'BUSINESS', 'Antropología': 'SOCIAL', 'Arquitectura y Urbanismo': 'ENGINEERING',
+    'Arte: Especialidad de Artes Plásticas': 'ART_EDU', 'Arte: Especialidad de Música': 'ART_EDU',
+    'Ciencias Biológicas': 'HEALTH', 'Ciencias Contables': 'BUSINESS', 'Ciencias de la Comunicación Social': 'SOCIAL',
+    'Ciencias Físico Matemáticas': 'ENGINEERING', 'Derecho': 'SOCIAL', 'Educación Física': 'ART_EDU',
+    'Educación Inicial': 'ART_EDU', 'Educación Primaria': 'ART_EDU', 'Educación Secundaria': 'ART_EDU',
+    'Enfermería': 'HEALTH', 'Ingeniería Agrícola': 'ENGINEERING', 'Ingeniería Agroindustrial': 'ENGINEERING',
+    'Ingeniería Agronómica': 'ENGINEERING', 'Ingeniería Civil': 'ENGINEERING',
+    'Ingeniería de Inteligencia Artificial y Ciencia de Datos': 'ENGINEERING', 'Ingeniería de Minas': 'ENGINEERING',
+    'Ingeniería de Sistemas': 'ENGINEERING', 'Ingeniería de Telecomunicaciones': 'ENGINEERING',
+    'Ingeniería Económica': 'BUSINESS', 'Ingeniería Electrónica': 'ENGINEERING', 'Ingeniería Empresarial': 'BUSINESS',
+    'Ingeniería Estadística e Informática': 'ENGINEERING', 'Ingeniería Geológica': 'ENGINEERING',
+    'Ingeniería Mecánica Eléctrica': 'ENGINEERING', 'Ingeniería Metalúrgica': 'ENGINEERING',
+    'Ingeniería Química': 'ENGINEERING', 'Ingeniería Topográfica y Agrimensura': 'ENGINEERING',
+    'Medicina Humana': 'HEALTH', 'Medicina Veterinaria y Zootecnia': 'HEALTH',
+    'Nutrición Humana': 'HEALTH', 'Odontología': 'HEALTH', 'Sociología': 'SOCIAL',
+    'Trabajo Social': 'SOCIAL', 'Turismo': 'SOCIAL'
 }
 
-# Ajustes finos (Deltas) para carreras particulares
-CAREER_DELTAS = {
-    'Arquitectura y Urbanismo': {'a_artistic': +40, 'r_realistic': -10},
-    'Ingeniería de Inteligencia Artificial y Ciencia de Datos': {'math': +10, 'strong_tech': +15, 'r_realistic': -20},
-    'Derecho': {'strong_leadership': +20, 'e_enterprising': +15},
-    'Medicina Humana': {'science': +10, 'i_investigative': +10},
+# Inyección de métricas O*NET para competencias transversales
+CAREER_OVERRIDES = {
+    'Arquitectura y Urbanismo': {'ebr_arte_cultura': 85, 'transversal_tic': 88, 'transversal_autonomia': 69, 'transversal_resolucion_problemas': 75, 'transversal_pensamiento_critico': 75, 'transversal_percepcion_social': 60, 'transversal_toma_decisiones': 65},
+    'Ingeniería de Sistemas': {'transversal_tic': 99, 'transversal_autonomia': 75, 'transversal_resolucion_problemas': 90, 'transversal_pensamiento_critico': 85, 'transversal_percepcion_social': 50, 'transversal_toma_decisiones': 75},
+    'Ingeniería Estadística e Informática': {'ebr_matematica': 90, 'transversal_tic': 94, 'transversal_autonomia': 78, 'transversal_resolucion_problemas': 85, 'transversal_pensamiento_critico': 85, 'transversal_percepcion_social': 40, 'transversal_toma_decisiones': 70},
+    'Derecho': {'ebr_comunicacion': 90, 'ebr_dpcc': 95, 'transversal_tic': 76, 'transversal_autonomia': 69, 'transversal_resolucion_problemas': 80, 'transversal_pensamiento_critico': 90, 'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 90},
+    'Medicina Humana': {'ebr_ciencia_tecnologia': 95, 'transversal_tic': 78, 'transversal_autonomia': 85, 'transversal_resolucion_problemas': 95, 'transversal_pensamiento_critico': 95, 'transversal_percepcion_social': 90, 'transversal_toma_decisiones': 95},
+    'Sociología': {'ebr_ciencias_sociales': 95, 'transversal_tic': 68, 'transversal_autonomia': 72, 'transversal_resolucion_problemas': 75, 'transversal_pensamiento_critico': 85, 'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 70},
+    'Educación Física': {'ebr_educacion_fisica': 95, 'ebr_arte_cultura': 50, 'transversal_tic': 45, 'transversal_autonomia': 56, 'transversal_resolucion_problemas': 55, 'transversal_pensamiento_critico': 60, 'transversal_percepcion_social': 80, 'transversal_toma_decisiones': 65},
+    'Ciencias de la Comunicación Social': {'ebr_comunicacion': 95, 'transversal_tic': 75, 'transversal_autonomia': 70, 'transversal_resolucion_problemas': 65, 'transversal_pensamiento_critico': 80, 'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 75},
+    'Ciencias Contables': {'transversal_tic': 94, 'transversal_autonomia': 63, 'transversal_resolucion_problemas': 75, 'transversal_pensamiento_critico': 80, 'transversal_percepcion_social': 60, 'transversal_toma_decisiones': 85},
+    'Trabajo Social': {'transversal_tic': 63, 'transversal_autonomia': 63, 'transversal_resolucion_problemas': 70, 'transversal_pensamiento_critico': 75, 'transversal_percepcion_social': 95, 'transversal_toma_decisiones': 80},
+    'Turismo': {'transversal_tic': 55, 'transversal_autonomia': 53, 'transversal_resolucion_problemas': 60, 'transversal_pensamiento_critico': 65, 'transversal_percepcion_social': 85, 'transversal_toma_decisiones': 70},
 }
 
 def generate_data():
-    all_students = []
-    career_centroids = []
-    
-    n_students_per_career = 150
+    career_rows = []
     
     for career, area in CAREERS_MAPPING.items():
-        base_vector = np.copy(PROFILES[area])
+        profile = PROFILES[area].copy()
+        profile['career'] = career
         
-        # Aplicar deltas específicos
-        if career in CAREER_DELTAS:
-            for feat, change in CAREER_DELTAS[career].items():
-                idx = FEATURES.index(feat)
-                base_vector[idx] += change
-                
-        # Agregar pequeña variación única a cada carrera para evitar empates (espejismos de clúster)
-        jitter = np.random.uniform(-3, 3, size=len(FEATURES))
-        base_vector = base_vector + jitter
-        
-        # Asegurar límites 0-100
-        base_vector = np.clip(base_vector, 0, 100)
-        
-        career_centroids.append([career] + base_vector.tolist())
-        
-        # Construir matriz de covarianza base
-        # Varianza base de ~150 para que los scores fluctúen +/- 12 puntos
-        cov_matrix = np.diag(np.random.uniform(100, 200, size=len(FEATURES)))
-        
-        # Inyectar correlaciones fuertes (esto es lo que Mahalanobis aprovecha)
-        # Math(0) con Investigative(4) y Tech(11)
-        cov_matrix[0, 4] = cov_matrix[4, 0] = 80
-        cov_matrix[0, 11] = cov_matrix[11, 0] = 70
-        # Lit(2) con Social(6) y Artistic(5)
-        cov_matrix[2, 6] = cov_matrix[6, 2] = 80
-        cov_matrix[2, 5] = cov_matrix[5, 2] = 60
-        
-        # Asegurar que la matriz sea definida positiva usando un pequeño truco
-        min_eig = np.min(np.real(np.linalg.eigvals(cov_matrix)))
-        if min_eig < 0:
-            cov_matrix -= 10 * min_eig * np.eye(*cov_matrix.shape)
+        if career in CAREER_OVERRIDES:
+            profile.update(CAREER_OVERRIDES[career])
             
-        students_data = np.random.multivariate_normal(base_vector, cov_matrix, n_students_per_career)
-        students_data = np.clip(np.round(students_data), 0, 100)
+        career_rows.append(profile)
         
-        for student in students_data:
-            all_students.append([career] + student.tolist())
-            
-    # Guardar estudiantes
-    df_students = pd.DataFrame(all_students, columns=['career'] + FEATURES)
-    os.makedirs('../data', exist_ok=True)
-    df_students.to_csv('../data/students.csv', index_label='student_id')
+    df_careers = pd.DataFrame(career_rows)
+    df_careers = df_careers[['career'] + FEATURES]
     
-    # Guardar centroides
-    df_careers = pd.DataFrame(career_centroids, columns=['career'] + FEATURES)
+    os.makedirs('../data', exist_ok=True)
     df_careers.to_csv('../data/careers.csv', index=False)
     
-    print(f"✅ Generados {len(df_students)} estudiantes sintéticos (150 por cada una de las 38 carreras).")
-    print(f"✅ Datos guardados en ../data/students.csv y ../data/careers.csv")
+    print(f"✅ Matriz estática generada: {len(df_careers)} carreras x {len(FEATURES)} columnas.")
+    print("✅ Dimensiones: 10 EBR + 6 Transversales (O*NET).")
 
 if __name__ == "__main__":
     generate_data()
