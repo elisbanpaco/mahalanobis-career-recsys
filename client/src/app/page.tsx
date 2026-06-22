@@ -48,6 +48,8 @@ export default function Home() {
       });
       const data = await res.json();
       setResults(data.top_careers);
+      localStorage.setItem('mahalanobis_results', JSON.stringify(data.top_careers));
+      localStorage.setItem('mahalanobis_scores', JSON.stringify(scores));
       setTimeout(() => setAppState("RESULTS"), 2500);
     } catch (err) {
       console.error(err);
