@@ -8,61 +8,53 @@ from services.recommender import CareerRecommenderMahalanobis
 
 app = FastAPI(
     title="Mahalanobis Career RecSys API",
-    description="API para recomendación de carreras UNAP usando distancia de Mahalanobis",
-    version="1.0.0"
+    description="API con modelo 16D: 10 EBR + 6 Transversales (O*NET)",
+    version="1.2.0"
 )
 
-# CORS para que el Frontend (/client) pueda consumir la API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # En producción se restringe al puerto del frontend
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Variables globales para los datos
-students_df = None
 careers_df = None
 recommender = None
 
 FEATURES = [
-    'math', 'science', 'literature',
-    'r_realistic', 'i_investigative', 'a_artistic', 's_social', 'e_enterprising', 'c_conventional',
-    'strong_leadership', 'strong_practical', 'strong_tech'
+    'ebr_matematica', 'ebr_comunicacion', 'ebr_ciencia_tecnologia', 
+    'ebr_ciencias_sociales', 'ebr_dpcc', 'ebr_ingles', 'ebr_ept', 
+    'ebr_arte_cultura', 'ebr_educacion_fisica', 'ebr_religion',
+    'transversal_tic', 'transversal_autonomia',
+    'transversal_resolucion_problemas', 'transversal_pensamiento_critico',
+    'transversal_percepcion_social', 'transversal_toma_decisiones'
 ]
 
 @app.on_event("startup")
 async def startup_event():
-    global students_df, careers_df, recommender
+    global careers_df, recommender
     try:
-        # Rutas relativas asumiendo que se corre desde la carpeta /api
-        data_path_students = os.path.join(os.path.dirname(__file__), '..', 'data', 'students.csv')
         data_path_careers = os.path.join(os.path.dirname(__file__), '..', 'data', 'careers.csv')
-        
-        students_df = pd.read_csv(data_path_students)
         careers_df = pd.read_csv(data_path_careers)
-        
-        recommender = CareerRecommenderMahalanobis(students_df, careers_df, FEATURES)
+        recommender = CareerRecommenderMahalanobis(careers_df, FEATURES)
         print("✅ Sistema de recomendación inicializado correctamente.")
     except Exception as e:
         print(f"❌ Error al inicializar datos: {e}")
 
 @app.get("/")
 def read_root():
-    return {"message": "Bienvenido a Mahalanobis Career RecSys API"}
+    return {"message": "Bienvenido a Mahalanobis Career RecSys API (16D)"}
 
 @app.post("/recommend", response_model=RecommendationResponse)
 def get_recommendations(profile: StudentProfileRequest):
     if recommender is None:
         raise HTTPException(status_code=500, detail="El modelo no está inicializado")
         
-    profile_dict = profile.dict()
-    
-    # Obtener el top 5 de carreras recomendadas
+    profile_dict = profile.model_dump() if hasattr(profile, 'model_dump') else profile.dict()
     recs_df = recommender.recommend(profile_dict, top_n=5)
     
-    # Formatear la respuesta
     top_careers = []
     for _, row in recs_df.iterrows():
         top_careers.append({
