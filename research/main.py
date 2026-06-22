@@ -3,49 +3,38 @@ from data_generator import generate_data, FEATURES
 from recommender import CareerRecommenderMahalanobis
 
 def main():
-    # 2. Cargar los datos
-    print("\n--- 1. Cargando Datos (Modelo Híbrido 12D) ---")
-    df_students = pd.read_csv('../data/students.csv')
+    print("\n--- 1. Cargando Matriz de Carreras (16D: 10 EBR + 6 Transversales O*NET) ---")
     df_careers = pd.read_csv('../data/careers.csv')
-    
-    print(f"Total estudiantes en dataset: {len(df_students)}")
     print(f"Total carreras disponibles: {len(df_careers)}")
     
-    # 3. Configurar el recomendador
-    rec_sys = CareerRecommenderMahalanobis(df_students, df_careers, FEATURES)
+    rec_sys = CareerRecommenderMahalanobis(df_careers, FEATURES)
     
-    # 4. Caso de Prueba: "Juan" (El Espejismo en Inteligencia Artificial)
-    # Juan tiene una nota regular/baja en matemáticas (60/100), pero tiene una motivación brutal 
-    # por investigar (i_investigative = 95) y la tecnología (strong_tech = 95).
-    # Un algoritmo Euclidiano lo alejaría de carreras de ciencias/ingeniería puras.
-    # Mahalanobis notará que su alta motivación tecnológica e investigativa es común en ese perfil.
-    juan_profile = {
-        'math': 60,
-        'science': 70,
-        'literature': 50,
-        'r_realistic': 60,
-        'i_investigative': 95,
-        'a_artistic': 40,
-        's_social': 30,
-        'e_enterprising': 50,
-        'c_conventional': 50,
-        'strong_leadership': 40,
-        'strong_practical': 50,
-        'strong_tech': 95
+    # Caso de Prueba: Estudiante con perfil analítico y resolutivo
+    student_profile = {
+        'ebr_matematica': 85,
+        'ebr_comunicacion': 60,
+        'ebr_ciencia_tecnologia': 80,
+        'ebr_ciencias_sociales': 50,
+        'ebr_dpcc': 50,
+        'ebr_ingles': 75,
+        'ebr_ept': 80,
+        'ebr_arte_cultura': 40,
+        'ebr_educacion_fisica': 50,
+        'ebr_religion': 50,
+        'transversal_tic': 95,          
+        'transversal_autonomia': 80,
+        'transversal_resolucion_problemas': 90,
+        'transversal_pensamiento_critico': 85,
+        'transversal_percepcion_social': 40,
+        'transversal_toma_decisiones': 75
     }
     
-    print("\n--- 2. Perfil del Estudiante (Juan) ---")
-    for k, v in juan_profile.items():
+    print("\n--- 2. Perfil del Estudiante ---")
+    for k, v in student_profile.items():
         print(f"  {k}: {v}")
     
-    # 5. Obtener Recomendaciones con Euclidiana vs Mahalanobis
-    print("\n--- 3a. Distancia Euclidiana (El 'Espejismo') ---")
-    euclidean_recs = rec_sys.get_euclidean_recommendation(juan_profile, top_n=5)
-    for idx, row in euclidean_recs.iterrows():
-        print(f"[{row['euclidean_dist']:.2f}] {row['career']}")
-        
-    print("\n--- 3b. Distancia de Mahalanobis (El Contexto Real) ---")
-    mahalanobis_recs = rec_sys.recommend(juan_profile, top_n=5)
+    print("\n--- 3. Recomendaciones (Mahalanobis) ---")
+    mahalanobis_recs = rec_sys.recommend(student_profile, top_n=5)
     for idx, row in mahalanobis_recs.iterrows():
         print(f"[{row['mahalanobis_dist']:.2f}] {row['career']}")
 
