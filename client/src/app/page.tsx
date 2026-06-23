@@ -14,6 +14,7 @@ export default function Home() {
   const [dimensionScores, setDimensionScores] = useState<Record<string, number[]>>({});
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [results, setResults] = useState<CareerRecommendation[]>([]);
+  const [history, setHistory] = useState<{ dimIndex: number, subIndex: number, scoreDimId: string }[]>([]);
 
   const handleStart = () => setAppState("TEST");
 
@@ -62,8 +63,14 @@ export default function Home() {
     const dim = DIMENSIONS[currentDimIndex];
     const question = dim.questions[currentSubIndex];
     
-    const currentDimAnswers = dimensionScores[dim.id] || [];
-    const newAnswers = [...currentDimAnswers, value];
+    // Clonamos las respuestas actuales y sobreescribimos la posición actual
+    const currentDimAnswers = [...(dimensionScores[dim.id] || [])];
+    currentDimAnswers[currentSubIndex] = value;
+    // Truncamos cualquier respuesta futura si el usuario retrocedió y cambió de camino
+    currentDimAnswers.length = currentSubIndex + 1;
+    
+    // Guardar en el historial
+    setHistory([...history, { dimIndex: currentDimIndex, subIndex: currentSubIndex, scoreDimId: dim.id }]);
     
     // GATING LOGIC ACTUALIZADO: Corte temprano si en exploración o aplicación demuestran total desinterés
     let shouldSkip = false;
@@ -75,11 +82,11 @@ export default function Home() {
     }
 
     if (shouldSkip || currentSubIndex === dim.questions.length - 1) {
-      const finalScore = calculateWeightedScore(dim.questions, newAnswers);
+      const finalScore = calculateWeightedScore(dim.questions, currentDimAnswers);
       const newFinalScores = { ...finalScores, [dim.id]: finalScore };
       
       setFinalScores(newFinalScores);
-      setDimensionScores({ ...dimensionScores, [dim.id]: newAnswers });
+      setDimensionScores({ ...dimensionScores, [dim.id]: currentDimAnswers });
 
       if (currentDimIndex < DIMENSIONS.length - 1) {
         setCurrentDimIndex(currentDimIndex + 1);
@@ -88,9 +95,26 @@ export default function Home() {
         submitTest(newFinalScores);
       }
     } else {
-      setDimensionScores({ ...dimensionScores, [dim.id]: newAnswers });
+      setDimensionScores({ ...dimensionScores, [dim.id]: currentDimAnswers });
       setCurrentSubIndex(currentSubIndex + 1);
     }
+  };
+
+  const handleGoBack = () => {
+    if (history.length === 0) return;
+    
+    const lastState = history[history.length - 1];
+    
+    // Revert finalScores if going back across a dimension boundary
+    if (lastState.dimIndex !== currentDimIndex) {
+      const newFinalScores = { ...finalScores };
+      delete newFinalScores[DIMENSIONS[lastState.dimIndex].id];
+      setFinalScores(newFinalScores);
+    }
+
+    setCurrentDimIndex(lastState.dimIndex);
+    setCurrentSubIndex(lastState.subIndex);
+    setHistory(history.slice(0, -1));
   };
 
   return (
@@ -165,21 +189,38 @@ export default function Home() {
               </h2>
               
               <div className="flex flex-col gap-4">
-                {DIMENSIONS[currentDimIndex].questions[currentSubIndex].options.map((opt, index) => (
-                  <button 
-                    key={index} 
-                    onClick={() => handleAnswer(opt.value)}
-                    className="w-full text-left px-5 md:px-8 py-5 md:py-6 rounded-2xl text-base md:text-lg transition-all duration-300 flex items-center gap-6 group bg-slate-900/40 border-white/5 text-slate-300 hover:bg-blue-600/20 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.3)] border relative overflow-hidden"
-                  >
-                    <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors border border-slate-700 bg-slate-800 text-slate-500 group-hover:bg-blue-500 group-hover:border-blue-400 group-hover:text-white font-mono text-sm">
-                      {index + 1}
-                    </div>
-                    <span className="leading-relaxed group-hover:text-white transition-colors relative z-10">{opt.label}</span>
-                  </button>
-                ))}
+                {DIMENSIONS[currentDimIndex].questions[currentSubIndex].options.map((opt, index) => {
+                  const isSelected = dimensionScores[DIMENSIONS[currentDimIndex].id]?.[currentSubIndex] === opt.value;
+                  return (
+                    <button 
+                      key={index} 
+                      onClick={() => handleAnswer(opt.value)}
+                      className={`w-full text-left px-5 md:px-8 py-5 md:py-6 rounded-2xl text-base md:text-lg transition-all duration-300 flex items-center gap-6 group border relative overflow-hidden ${isSelected ? 'bg-blue-600/30 border-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.2)] text-white ring-1 ring-blue-500' : 'bg-slate-900/40 border-white/5 text-slate-300 hover:bg-blue-600/20 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.3)]'}`}
+                    >
+                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors border font-mono text-sm ${isSelected ? 'bg-blue-500 border-blue-400 text-white shadow-lg shadow-blue-500/50' : 'border-slate-700 bg-slate-800 text-slate-500 group-hover:bg-blue-500 group-hover:border-blue-400 group-hover:text-white'}`}>
+                        {index + 1}
+                      </div>
+                      <span className={`leading-relaxed transition-colors relative z-10 ${isSelected ? 'text-white font-medium' : 'group-hover:text-white'}`}>{opt.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
             
+            <div className="flex items-center justify-between mb-6">
+              {history.length > 0 ? (
+                <button 
+                  onClick={handleGoBack}
+                  className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors px-4 py-2 rounded-xl hover:bg-slate-800/50 border border-transparent hover:border-white/10"
+                >
+                  <ArrowLeft size={20} />
+                  <span>Volver a la pregunta anterior</span>
+                </button>
+              ) : (
+                <div /> // Spacer
+              )}
+            </div>
+
             <p className="text-center text-slate-500 text-sm font-medium tracking-wide">
               Lee cuidadosamente las 5 reacciones y selecciona la que describe tu comportamiento más instintivo.
             </p>
