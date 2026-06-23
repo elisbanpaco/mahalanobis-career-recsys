@@ -18,389 +18,581 @@ export interface Dimension {
 
 export const DIMENSIONS: Dimension[] = [
   {
-    id: 'ebr_matematica',
-    title: 'Matemática',
-    questions: [
-      { level: 1, q: 'Vas al supermercado y notas descuentos complejos en tus productos favoritos.', options: [
-        { value: 20, label: 'Pago lo que diga la caja, ni siquiera miro el ticket o el precio final.' },
-        { value: 40, label: 'Si veo un descuento lo aprovecho, pero evito hacer cálculos matemáticos.' },
-        { value: 60, label: 'Calculo mentalmente muy por encima para saber si me conviene llevarlo.' },
-        { value: 80, label: 'Saco mi celular para sumar rápido, comparar y asegurar el ahorro exacto.' },
-        { value: 100, label: 'Disfruto calculando mentalmente el porcentaje exacto y el margen de ahorro.' }
-      ]},
-      { level: 2, q: 'En un proyecto grupal te piden llevar el control de todos los gastos y el presupuesto.', options: [
-        { value: 20, label: 'Me niego rotundamente y pido cambiar a un rol donde no toque números.' },
-        { value: 40, label: 'Acepto con mala cara y le pido a alguien que revise mis sumas luego.' },
-        { value: 60, label: 'Anoto los gastos en un papel sumando lo básico para cumplir la tarea.' },
-        { value: 80, label: 'Uso una hoja de cálculo simple con fórmulas básicas para ordenar todo.' },
-        { value: 100, label: 'Armo una matriz estructurada con proyecciones y análisis al centavo.' }
-      ]},
-      { level: 2, q: 'En las noticias muestran un gráfico estadístico complejo sobre la economía.', options: [
-        { value: 20, label: 'Cambio de canal o me salto la noticia, me aburren profundamente los gráficos.' },
-        { value: 40, label: 'Miro el gráfico un segundo pero solo leo el texto que lo acompaña.' },
-        { value: 60, label: 'Entiendo la tendencia general (si la línea sube o baja) y con eso me basta.' },
-        { value: 80, label: 'Me detengo a mirar los porcentajes y entiendo exactamente qué significa.' },
-        { value: 100, label: 'Analizo las variables, los ejes y saco conclusiones numéricas avanzadas.' }
-      ]},
-      { level: 3, q: 'Tienes frente a ti un problema de álgebra o geometría abstracta sin resolver.', options: [
-        { value: 20, label: 'Lo evito por completo, me frustran inmensamente los problemas abstractos.' },
-        { value: 40, label: 'Copio la respuesta de otro o busco el resultado directo en internet.' },
-        { value: 60, label: 'Aplico la fórmula de memoria mecánicamente solo para aprobar el curso.' },
-        { value: 80, label: 'Intento resolverlo por mi cuenta porque no me gusta dejar tareas a medias.' },
-        { value: 100, label: 'Me entusiasma genuinamente el desafío intelectual de buscar la solución.' }
-      ]},
-      { level: 3, q: 'Te invitan a un taller gratuito de programación basada en lógica matemática.', options: [
-        { value: 20, label: 'Lo rechazo de inmediato, los algoritmos y la lógica no son para mí.' },
-        { value: 40, label: 'Voy obligado o solo por curiosidad, pero sé que me costará mucho.' },
-        { value: 60, label: 'Asisto y trato de aprender lo básico para tener una habilidad extra.' },
-        { value: 80, label: 'Participo activamente y me esfuerzo por entender las secuencias lógicas.' },
-        { value: 100, label: 'Acepto emocionado, mi cerebro está hecho para la estructura y los algoritmos.' }
-      ]},
-      { level: 3, q: 'Después de mucho esfuerzo, logras cuadrar una ecuación larga que no salía.', options: [
-        { value: 20, label: 'Solo siento un enorme alivio de que por fin terminó ese castigo.' },
-        { value: 40, label: 'Me quejo del tiempo perdido pero entrego la hoja.' },
-        { value: 60, label: 'Me alegra haber cumplido con la tarea y cierro el libro.' },
-        { value: 80, label: 'Siento orgullo personal por no haberme rendido ante la dificultad.' },
-        { value: 100, label: 'Siento una profunda y genuina satisfacción intelectual por la precisión lograda.' }
-      ]}
-    ]
-  },
+  id: 'ebr_matematica',
+  title: 'Matemática',
+  questions: [
+    {
+      level: 1,
+      q: 'Cuando vas al supermercado y encuentras descuentos en tus productos favoritos, ¿cómo decides si realmente te conviene comprarlos?',
+      options: [
+        { value: 20, label: 'Compro sin revisar mucho los precios, confío en lo que aparece en la caja.' },
+        { value: 40, label: 'Me fijo en el descuento, pero prefiero no hacer cálculos.' },
+        { value: 60, label: 'Hago un cálculo rápido para tener una idea de cuánto estoy ahorrando.' },
+        { value: 80, label: 'Comparo precios y uso herramientas como la calculadora del celular para verificar.' },
+        { value: 100, label: 'Disfruto calcular exactamente porcentajes, descuentos y cuánto puedo ahorrar.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si en un trabajo grupal te piden organizar los gastos y controlar el presupuesto, ¿cómo actuarías?',
+      options: [
+        { value: 20, label: 'Preferiría no hacerlo porque trabajar con números no me resulta cómodo.' },
+        { value: 40, label: 'Lo hago, pero necesitaría que alguien revise mis cálculos después.' },
+        { value: 60, label: 'Organizo los gastos básicos y trato de mantener todo ordenado.' },
+        { value: 80, label: 'Uso herramientas como hojas de cálculo para organizar mejor la información.' },
+        { value: 100, label: 'Me gusta analizar los datos, hacer proyecciones y encontrar la mejor forma de administrar el dinero.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando ves un gráfico estadístico en una noticia, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'No suelo prestar atención porque los gráficos me parecen complicados.' },
+        { value: 40, label: 'Miro rápidamente la información, pero no intento analizarla mucho.' },
+        { value: 60, label: 'Identifico si los datos suben o bajan y entiendo la idea general.' },
+        { value: 80, label: 'Reviso porcentajes y detalles para comprender mejor lo que muestran los datos.' },
+        { value: 100, label: 'Analizo las variables, comparo información y saco mis propias conclusiones.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando tienes un problema de álgebra o geometría que parece difícil, ¿qué sueles hacer?',
+      options: [
+        { value: 20, label: 'Prefiero evitarlo porque me frustra enfrentar problemas abstractos.' },
+        { value: 40, label: 'Busco una respuesta rápida o una guía para poder resolverlo.' },
+        { value: 60, label: 'Intento aplicar los pasos aprendidos para encontrar la solución.' },
+        { value: 80, label: 'Me esfuerzo por resolverlo por mi cuenta antes de pedir ayuda.' },
+        { value: 100, label: 'Disfruto el reto y me motiva encontrar la solución aunque tome tiempo.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si te invitan a un taller de programación donde usarás lógica y matemáticas, ¿cómo reaccionarías?',
+      options: [
+        { value: 20, label: 'No me interesaría porque siento que ese tipo de temas no son para mí.' },
+        { value: 40, label: 'Iría por curiosidad, aunque probablemente me costaría bastante.' },
+        { value: 60, label: 'Participaría para aprender algo nuevo y tener otra habilidad.' },
+        { value: 80, label: 'Me esforzaría por entender cómo funcionan los procesos y la lógica.' },
+        { value: 100, label: 'Me entusiasmaría porque disfruto resolver problemas y crear soluciones con lógica.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Después de intentar varias veces resolver una ecuación complicada, ¿qué sentirías al lograrlo?',
+      options: [
+        { value: 20, label: 'Principalmente sentiría alivio porque por fin terminó.' },
+        { value: 40, label: 'Me alegraría haber terminado, aunque no lo disfrutaría mucho.' },
+        { value: 60, label: 'Me sentiría satisfecho por haber cumplido con la tarea.' },
+        { value: 80, label: 'Sentiría orgullo por haber superado una dificultad.' },
+        { value: 100, label: 'Disfrutaría mucho la sensación de haber encontrado la solución después del esfuerzo.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_comunicacion',
-    title: 'Comunicación',
-    questions: [
-      { level: 1, q: 'Debes enviar un mensaje importante y largo para coordinar a un equipo.', options: [
-        { value: 20, label: 'Mando un audio rápido y enredado para no tener que tipear nada.' },
-        { value: 40, label: 'Escribo todo junto sin comas ni puntos, esperando que me entiendan.' },
-        { value: 60, label: 'Escribo lo básico para que se entienda la idea principal y lo envío.' },
-        { value: 80, label: 'Reviso un par de veces la ortografía para que no se vea informal.' },
-        { value: 100, label: 'Cuido minuciosamente las palabras, la puntuación y el tono persuasivo.' }
-      ]},
-      { level: 2, q: 'Tienes que exponer un tema importante frente a toda tu clase u oficina.', options: [
-        { value: 20, label: 'Me aterra, busco cualquier excusa médica o me escondo para no hacerlo.' },
-        { value: 40, label: 'Hablo rápido, mirando al suelo y rogando que acabe el tormento pronto.' },
-        { value: 60, label: 'Leo casi todas las diapositivas para cumplir con mi parte sin arriesgarme.' },
-        { value: 80, label: 'Trato de explicar con mis propias palabras mirando al público.' },
-        { value: 100, label: 'Me preparo a fondo, modulo mi voz, uso lenguaje corporal y busco persuadir.' }
-      ]},
-      { level: 2, q: 'Te piden escribir un ensayo crítico sobre tu libro o película favorita.', options: [
-        { value: 20, label: 'Me da demasiada pereza escribir, evito la tarea a toda costa.' },
-        { value: 40, label: 'Escribo un par de párrafos obvios copiando reseñas de internet.' },
-        { value: 60, label: 'Hago un resumen básico de la trama cumpliendo la longitud pedida.' },
-        { value: 80, label: 'Escribo mi opinión sincera y trato de estructurarla con algo de orden.' },
-        { value: 100, label: 'Escribo un análisis profundo, impecablemente argumentado y redactado.' }
-      ]},
-      { level: 3, q: 'Entras a un debate sobre un tema ideológico o controversial.', options: [
-        { value: 20, label: 'Me quedo completamente callado y me alejo, detesto las confrontaciones.' },
-        { value: 40, label: 'Asiento con la cabeza pero no me atrevo a decir nada en voz alta.' },
-        { value: 60, label: 'Doy mi opinión brevemente solo si alguien me pregunta directamente.' },
-        { value: 80, label: 'Expongo mis ideas e intento defenderme si me contradicen.' },
-        { value: 100, label: 'Uso argumentos estructurados, refuto ideas y convenzo usando oratoria.' }
-      ]},
-      { level: 3, q: 'Encuentras un libro clásico de la literatura universal de 500 páginas.', options: [
-        { value: 20, label: 'Jamás lo tocaría, la lectura densa me da sueño al instante.' },
-        { value: 40, label: 'Leerías un resumen en YouTube para saber de qué trata y aparentar.' },
-        { value: 60, label: 'Lo leo lentamente a lo largo de los meses si es una tarea obligatoria.' },
-        { value: 80, label: 'Lo leo por iniciativa propia porque aprecio las buenas historias.' },
-        { value: 100, label: 'Me apasiona devorarlo y analizar a fondo su estructura narrativa y retórica.' }
-      ]},
-      { level: 3, q: 'Te ofrecen dirigir el periódico institucional o el club de oratoria de tu zona.', options: [
-        { value: 20, label: 'Me niego rotundamente y salgo huyendo de la propuesta.' },
-        { value: 40, label: 'Acepto solo si me prometen hacer el trabajo pesado por mí.' },
-        { value: 60, label: 'Acepto si no hay nadie más para hacerlo, asumiendo lo básico.' },
-        { value: 80, label: 'Lo tomo como una buena oportunidad para mejorar mis habilidades.' },
-        { value: 100, label: 'Acepto emocionado por el inmenso reto comunicativo y editorial.' }
-      ]}
-    ]
-  },
+  id: 'ebr_comunicacion',
+  title: 'Comunicación',
+  questions: [
+    {
+      level: 1,
+      q: 'Cuando tienes que enviar un mensaje importante y explicar algo a un equipo, ¿cómo sueles hacerlo?',
+      options: [
+        { value: 20, label: 'Prefiero enviar algo corto sin preocuparme mucho por cómo se entiende.' },
+        { value: 40, label: 'Escribo la información básica, aunque a veces no reviso mucho el mensaje.' },
+        { value: 60, label: 'Intento explicar lo necesario para que los demás comprendan la idea principal.' },
+        { value: 80, label: 'Reviso el mensaje para que sea claro, ordenado y fácil de entender.' },
+        { value: 100, label: 'Cuido mucho las palabras, el tono y la forma de comunicar para lograr el objetivo.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si tienes que presentar un tema importante frente a tu clase o equipo de trabajo, ¿cómo te preparas?',
+      options: [
+        { value: 20, label: 'Me pongo muy nervioso y preferiría evitar hablar frente a otros.' },
+        { value: 40, label: 'Lo hago, pero con bastante nervios y tratando de terminar rápido.' },
+        { value: 60, label: 'Preparo lo básico y sigo una guía para poder explicar el tema.' },
+        { value: 80, label: 'Practico y busco explicar con mis propias palabras para conectar mejor.' },
+        { value: 100, label: 'Me preparo bastante, manejo mi voz y busco transmitir el mensaje de forma convincente.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando tienes que escribir un ensayo o una opinión sobre un libro, película o tema, ¿cómo lo haces?',
+      options: [
+        { value: 20, label: 'Me cuesta mucho escribir y prefiero evitar este tipo de tareas.' },
+        { value: 40, label: 'Escribo algo sencillo basándome en información que encuentro.' },
+        { value: 60, label: 'Hago un resumen con mi opinión general sobre el tema.' },
+        { value: 80, label: 'Intento organizar mis ideas y expresar claramente lo que pienso.' },
+        { value: 100, label: 'Disfruto analizar, argumentar y desarrollar ideas profundas por escrito.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando participas en un debate sobre un tema importante, ¿cómo sueles actuar?',
+      options: [
+        { value: 20, label: 'Prefiero no participar porque me incomodan las discusiones.' },
+        { value: 40, label: 'Escucho a los demás, pero me cuesta expresar mi opinión.' },
+        { value: 60, label: 'Comparto mi punto de vista cuando siento que es necesario.' },
+        { value: 80, label: 'Explico mis ideas y trato de defenderlas con buenos argumentos.' },
+        { value: 100, label: 'Disfruto debatir, analizar diferentes puntos de vista y construir argumentos sólidos.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si encuentras un libro extenso sobre un tema interesante, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Probablemente no lo leería porque me cuesta mantener la atención con textos largos.' },
+        { value: 40, label: 'Buscaría un resumen para conocer la idea principal.' },
+        { value: 60, label: 'Lo leería poco a poco si necesito aprender sobre el tema.' },
+        { value: 80, label: 'Lo leería porque disfruto aprender y descubrir nuevas ideas.' },
+        { value: 100, label: 'Me interesaría analizarlo profundamente y comprender cómo está construido.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si te ofrecen dirigir un periódico, proyecto de comunicación o grupo de expresión, ¿cómo reaccionarías?',
+      options: [
+        { value: 20, label: 'Preferiría no aceptar porque no me sentiría cómodo liderando algo así.' },
+        { value: 40, label: 'Aceptaría solo si tengo bastante apoyo de otras personas.' },
+        { value: 60, label: 'Lo asumiría si fuera necesario y cumpliría con lo básico.' },
+        { value: 80, label: 'Lo vería como una oportunidad para mejorar mis habilidades comunicativas.' },
+        { value: 100, label: 'Me entusiasmaría liderar un espacio donde pueda crear, comunicar y expresar ideas.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_ciencia_tecnologia',
-    title: 'Ciencia y Tecnología',
-    questions: [
-      { level: 1, q: 'Un documental explica la física de los agujeros negros o el código genético humano.', options: [
-        { value: 20, label: 'Cambio de canal inmediatamente a algo de entretenimiento ligero.' },
-        { value: 40, label: 'Lo dejo de fondo mientras hago otra cosa, sin prestarle atención.' },
-        { value: 60, label: 'Lo veo un rato si no hay nada mejor, me parece curioso.' },
-        { value: 80, label: 'Me detengo a mirarlo y trato de entender los conceptos que explican.' },
-        { value: 100, label: 'Me quedo viéndolo absolutamente fascinado por los misterios del universo.' }
-      ]},
-      { level: 2, q: 'Toca hacer un experimento de reacciones químicas o circuitos en el laboratorio.', options: [
-        { value: 20, label: 'Me siento atrás, dejo que mis compañeros lo hagan y yo me distraigo.' },
-        { value: 40, label: 'Hago de asistente pasándose tubos o cables sin entender qué pasa.' },
-        { value: 60, label: 'Sigo las instrucciones del manual paso a paso, mecánicamente.' },
-        { value: 80, label: 'Participo activamente y me preocupo de que el resultado salga bien.' },
-        { value: 100, label: 'Observo cada reacción emocionado, buscando entender el proceso científico profundo.' }
-      ]},
-      { level: 2, q: 'Lees una noticia sobre un nuevo avance médico, biológico o aeroespacial.', options: [
-        { value: 20, label: 'No me interesan esas noticias, me salto directo a los deportes o memes.' },
-        { value: 40, label: 'Solo leo el titular grande y deslizo hacia abajo.' },
-        { value: 60, label: 'Leo el primer párrafo para estar medianamente informado y converso de ello.' },
-        { value: 80, label: 'Leo el artículo completo para entender los beneficios de ese avance.' },
-        { value: 100, label: 'Busco otras fuentes para entender a detalle el principio físico o biológico.' }
-      ]},
-      { level: 3, q: 'Tienes la opción de participar en una feria de ciencias regional muy rigurosa.', options: [
-        { value: 20, label: 'Falto a clases ese día para asegurarme de que no me obliguen a ir.' },
-        { value: 40, label: 'Hago un volcán de bicarbonato o algo copiado de internet de última hora.' },
-        { value: 60, label: 'Armo un proyecto sencillo y presentable para cumplir con la nota.' },
-        { value: 80, label: 'Investigo un buen tema y me preparo para explicarlo con claridad.' },
-        { value: 100, label: 'Diseño un experimento original, documentado bajo el rigor del método científico.' }
-      ]},
-      { level: 3, q: 'Se te descompone un aparato electrónico o mecanismo complejo en casa.', options: [
-        { value: 20, label: 'Lo boto a la basura y le pido a alguien que compre uno nuevo.' },
-        { value: 40, label: 'Lo golpeo un par de veces esperando que vuelva a encender.' },
-        { value: 60, label: 'Reviso si hay un cable suelto o algo obvio antes de llamar al técnico.' },
-        { value: 80, label: 'Busco un tutorial en internet para ver si puedo arreglarlo yo mismo.' },
-        { value: 100, label: 'Lo desarmo pacientemente intentando descifrar su lógica y mecanismo interno.' }
-      ]},
-      { level: 3, q: 'Te imaginas tu futuro profesional vistiendo una bata investigando en un laboratorio.', options: [
-        { value: 20, label: 'Es mi peor pesadilla, me deprimiría estar encerrado entre microscopios.' },
-        { value: 40, label: 'Lo odiaría, preferiría algo con más contacto humano y movimiento.' },
-        { value: 60, label: 'Lo toleraría como un trabajo normal si el sueldo fuera muy bueno.' },
-        { value: 80, label: 'Me gustaría, me parece un entorno ordenado, limpio e interesante.' },
-        { value: 100, label: 'Sería un sueño absoluto dedicarme a expandir la frontera de la ciencia pura.' }
-      ]}
-    ]
-  },
+  id: 'ebr_ciencia_tecnologia',
+  title: 'Ciencia y Tecnología',
+  questions: [
+    {
+      level: 1,
+      q: 'Cuando ves un documental sobre temas como el espacio, la genética o nuevos descubrimientos científicos, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'No suele llamarme la atención y prefiero ver otro tipo de contenido.' },
+        { value: 40, label: 'Lo dejo de fondo, pero no siempre presto mucha atención.' },
+        { value: 60, label: 'Lo veo por curiosidad y trato de entender la idea general.' },
+        { value: 80, label: 'Me interesa aprender y trato de comprender los conceptos que explican.' },
+        { value: 100, label: 'Me apasiona descubrir cómo funciona el mundo y quiero conocer más del tema.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si participas en un experimento de laboratorio con reacciones químicas o tecnología, ¿cómo actuarías?',
+      options: [
+        { value: 20, label: 'Prefiero observar desde lejos porque no me interesa mucho participar.' },
+        { value: 40, label: 'Ayudo siguiendo instrucciones, aunque sin involucrarme demasiado.' },
+        { value: 60, label: 'Sigo los pasos indicados para completar correctamente la actividad.' },
+        { value: 80, label: 'Participo activamente y me interesa entender por qué ocurre cada cosa.' },
+        { value: 100, label: 'Me emociona investigar, experimentar y descubrir cómo funcionan los procesos.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando lees una noticia sobre un nuevo avance médico, tecnológico o científico, ¿qué haces?',
+      options: [
+        { value: 20, label: 'Normalmente no le presto atención porque no es un tema que me interese.' },
+        { value: 40, label: 'Leo solo el título para saber de qué trata.' },
+        { value: 60, label: 'Leo la información principal para entender la idea general.' },
+        { value: 80, label: 'Investigo más porque me interesa conocer cómo funciona ese avance.' },
+        { value: 100, label: 'Busco diferentes fuentes para comprender a fondo la ciencia detrás del descubrimiento.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si tienes la oportunidad de participar en una feria de ciencias, ¿cómo prepararías tu proyecto?',
+      options: [
+        { value: 20, label: 'Preferiría no participar porque no me siento cómodo con ese tipo de actividades.' },
+        { value: 40, label: 'Haría algo sencillo para cumplir con la presentación.' },
+        { value: 60, label: 'Prepararía un proyecto básico siguiendo las indicaciones necesarias.' },
+        { value: 80, label: 'Investigo un tema que me interese y me preparo para explicarlo bien.' },
+        { value: 100, label: 'Me entusiasma crear un proyecto original y aplicar el método científico.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si un aparato electrónico deja de funcionar, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'Prefiero reemplazarlo o pedir ayuda sin intentar revisarlo.' },
+        { value: 40, label: 'Intento revisar cosas simples, pero no profundizo mucho.' },
+        { value: 60, label: 'Busco identificar problemas básicos antes de llevarlo a reparar.' },
+        { value: 80, label: 'Investigo posibles soluciones y sigo tutoriales para intentar arreglarlo.' },
+        { value: 100, label: 'Me interesa entender cómo funciona y descubrir qué está fallando.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si imaginas tu futuro trabajando en un laboratorio investigando nuevos descubrimientos, ¿qué opinas?',
+      options: [
+        { value: 20, label: 'No sería algo que disfrutaría porque prefiero otro tipo de actividades.' },
+        { value: 40, label: 'No me atrae mucho, aunque podría hacerlo si fuera necesario.' },
+        { value: 60, label: 'Me parece interesante, pero no estoy seguro de dedicarme a eso.' },
+        { value: 80, label: 'Me gustaría porque disfruto aprender y trabajar con conocimiento científico.' },
+        { value: 100, label: 'Me entusiasma la idea de investigar y aportar nuevos descubrimientos.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_ciencias_sociales',
-    title: 'Ciencias Sociales',
-    questions: [
-      { level: 1, q: 'Alguien empieza a hablar sobre la historia antigua o mundial en una reunión.', options: [
-        { value: 20, label: 'Me desconecto totalmente, el pasado no me importa en lo absoluto.' },
-        { value: 40, label: 'Pienso en otra cosa mientras asiento con la cabeza fingiendo interés.' },
-        { value: 60, label: 'Escucho por respeto pero no me involucro ni aporto nada.' },
-        { value: 80, label: 'Hago un par de preguntas porque me gusta aprender cosas nuevas.' },
-        { value: 100, label: 'Participo activamente aportando datos, nombres y contextos históricos.' }
-      ]},
-      { level: 2, q: 'Hay elecciones presidenciales y se debaten diferentes modelos socioeconómicos.', options: [
-        { value: 20, label: 'Ignoro todo, la política y la economía son una pérdida de tiempo.' },
-        { value: 40, label: 'Me guío solo por los memes políticos o lo que dice mi familia.' },
-        { value: 60, label: 'Escucho los debates por encima para decidir un voto básico.' },
-        { value: 80, label: 'Investigo las propuestas para entender qué harán con el país.' },
-        { value: 100, label: 'Analizo críticamente el impacto macroeconómico y social de cada candidato.' }
-      ]},
-      { level: 2, q: 'Viajas de turismo a una ciudad con ruinas arqueológicas milenarias.', options: [
-        { value: 20, label: 'Me quejo de caminar tanto, me tomo una selfie rápida y busco un mall.' },
-        { value: 40, label: 'Camino por ahí sin prestar atención a los monumentos.' },
-        { value: 60, label: 'Sigo al guía turístico un rato para saber qué es cada cosa de forma general.' },
-        { value: 80, label: 'Leo los carteles y hago preguntas sobre cómo fue construida la ciudad.' },
-        { value: 100, label: 'Me sumerjo en la historia profunda, economía y cosmología de sus habitantes.' }
-      ]},
-      { level: 3, q: 'Te regalan un libro profundo sobre sociología, antropología o geopolítica.', options: [
-        { value: 20, label: 'Lo uso para nivelar una mesa, jamás abriría algo tan aburrido.' },
-        { value: 40, label: 'Lo guardo en el librero para aparentar inteligencia, pero no lo toco.' },
-        { value: 60, label: 'Leerías solo un capítulo si alguien me obliga o por curiosidad extrema.' },
-        { value: 80, label: 'Lo leo poco a poco subrayando las ideas que me parecen importantes.' },
-        { value: 100, label: 'Lo devoraría por completo con un interés académico y analítico total.' }
-      ]},
-      { level: 3, q: 'En una clase universitaria se debate sobre las causas de la pobreza y la desigualdad.', options: [
-        { value: 20, label: 'Me pongo los audífonos, no soporto esos discursos sociales.' },
-        { value: 40, label: 'Digo "es culpa de los políticos" sin dar ningún otro argumento.' },
-        { value: 60, label: 'Doy una opinión superficial basada en lo que escucho en las noticias.' },
-        { value: 80, label: 'Trato de analizar la situación económica actual para dar mi punto de vista.' },
-        { value: 100, label: 'Argumento de forma impecable usando causas demográficas, históricas y sociopolíticas.' }
-      ]},
-      { level: 3, q: 'Te proponen dedicar tu vida a investigar rigurosamente el comportamiento de las sociedades.', options: [
-        { value: 20, label: 'Me volvería loco de aburrimiento y frustración, rechazo la oferta.' },
-        { value: 40, label: 'No lo elegiría, preferiría crear cosas palpables o hacer negocios.' },
-        { value: 60, label: 'Podría hacerlo si el ambiente laboral es relajado, pero no me apasiona.' },
-        { value: 80, label: 'Lo vería como una carrera interesante y digna para ayudar al mundo.' },
-        { value: 100, label: 'Sería mi vocación ideal: documentar, analizar y comprender la evolución humana.' }
-      ]}
-    ]
-  },
+  id: 'ebr_ciencias_sociales',
+  title: 'Ciencias Sociales',
+  questions: [
+    {
+      level: 1,
+      q: 'Cuando alguien empieza a conversar sobre historia, culturas antiguas o acontecimientos del mundo, ¿cómo sueles reaccionar?',
+      options: [
+        { value: 20, label: 'No suele interesarme mucho y prefiero hablar de otros temas.' },
+        { value: 40, label: 'Escucho un poco, pero normalmente pierdo el interés rápido.' },
+        { value: 60, label: 'Presto atención y entiendo las ideas principales.' },
+        { value: 80, label: 'Me interesa aprender y suelo hacer preguntas para conocer más.' },
+        { value: 100, label: 'Disfruto profundizar en los hechos, contextos y razones detrás de los acontecimientos.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando hay elecciones o se discuten temas políticos y económicos, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'Prefiero no involucrarme porque esos temas no llaman mi atención.' },
+        { value: 40, label: 'Escucho comentarios de otras personas, pero no investigo mucho.' },
+        { value: 60, label: 'Reviso información básica para tener una idea general del tema.' },
+        { value: 80, label: 'Investigo diferentes opiniones para formar mi propio criterio.' },
+        { value: 100, label: 'Analizo las propuestas, sus consecuencias y el impacto en la sociedad.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando visitas un lugar con mucha historia o restos arqueológicos, ¿qué suele interesarte más?',
+      options: [
+        { value: 20, label: 'Prefiero hacer otras actividades y no suelo interesarme mucho por la historia del lugar.' },
+        { value: 40, label: 'Lo observo por encima, pero sin profundizar demasiado.' },
+        { value: 60, label: 'Escucho la explicación general para conocer un poco más.' },
+        { value: 80, label: 'Leo información y hago preguntas para entender su historia.' },
+        { value: 100, label: 'Me interesa conocer la cultura, organización y forma de vida de quienes estuvieron allí.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si recibes un libro sobre sociología, antropología o temas sociales, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Probablemente no lo leería porque no es un tema que me atraiga.' },
+        { value: 40, label: 'Lo revisaría por encima, pero difícilmente lo terminaría.' },
+        { value: 60, label: 'Leería algunas partes si encuentro algo interesante.' },
+        { value: 80, label: 'Lo leería con calma para comprender mejor la sociedad y sus problemas.' },
+        { value: 100, label: 'Disfrutaría analizar profundamente las ideas y relacionarlas con la realidad.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando se debate sobre problemas sociales como desigualdad, pobreza o cambios culturales, ¿cómo participas?',
+      options: [
+        { value: 20, label: 'Prefiero no participar porque siento que son temas difíciles o incómodos.' },
+        { value: 40, label: 'Doy una opinión general basada en lo que he escuchado.' },
+        { value: 60, label: 'Comparto mi punto de vista desde mi experiencia personal.' },
+        { value: 80, label: 'Intento analizar las causas y escuchar diferentes perspectivas.' },
+        { value: 100, label: 'Me gusta investigar el tema y argumentar usando información histórica y social.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si tuvieras la oportunidad de investigar cómo funcionan las sociedades y el comportamiento humano, ¿te interesaría?',
+      options: [
+        { value: 20, label: 'No sería una actividad que disfrutaría hacer durante mucho tiempo.' },
+        { value: 40, label: 'Me parece interesante, pero preferiría otro tipo de trabajo.' },
+        { value: 60, label: 'Podría hacerlo si fuera parte de mis estudios o trabajo.' },
+        { value: 80, label: 'Me gustaría porque ayuda a comprender mejor a las personas y comunidades.' },
+        { value: 100, label: 'Me apasionaría investigar y descubrir cómo evoluciona la sociedad.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_dpcc',
-    title: 'Desarrollo Personal y Cívica',
-    questions: [
-      { level: 1, q: 'Eres testigo de cómo una persona abusa verbalmente de alguien muy vulnerable.', options: [
-        { value: 20, label: 'Saco mi celular para grabar o me alejo rápido, no es mi problema.' },
-        { value: 40, label: 'Siento mucha lástima pero miro a otro lado por temor a meterme.' },
-        { value: 60, label: 'Espero que alguien más intervenga o aviso a una autoridad discretamente.' },
-        { value: 80, label: 'Le digo al agresor desde lejos que se detenga y pido ayuda.' },
-        { value: 100, label: 'Intervengo de frente y con firmeza absoluta para frenar la injusticia.' }
-      ]},
-      { level: 2, q: 'En tu entorno hay un conflicto tenso y prolongado entre dos grupos de personas.', options: [
-        { value: 20, label: 'Los ignoro completamente o me burlo de sus peleas desde lejos.' },
-        { value: 40, label: 'Evito acercarme a ambos grupos para que no me arrastren al problema.' },
-        { value: 60, label: 'Trato de llevarme bien con ambos bandos sin opinar ni meterme.' },
-        { value: 80, label: 'Hablo con los líderes por separado para sugerirles que paren.' },
-        { value: 100, label: 'Actúo de mediador activo buscando conciliación, empatía y resolución estructural.' }
-      ]},
-      { level: 2, q: 'Te invitan a ser parte de un comité para defender y organizar los derechos de tu grupo.', options: [
-        { value: 20, label: 'Me niego tajantemente, detesto asumir responsabilidades ajenas.' },
-        { value: 40, label: 'Me escondo en el fondo para que voten por otro.' },
-        { value: 60, label: 'Acepto un cargo menor solo si mis amigos también se meten.' },
-        { value: 80, label: 'Acepto y asisto a las reuniones para dar ideas útiles.' },
-        { value: 100, label: 'Acepto con inmensa pasión impulsado por una profunda vocación cívica.' }
-      ]},
-      { level: 3, q: 'Hay un debate sumamente técnico sobre derechos humanos y el código penal.', options: [
-        { value: 20, label: 'Me da mucho sueño y estrés escuchar hablar de leyes y normas.' },
-        { value: 40, label: 'Digo que "las leyes no sirven" y me salgo de la conversación.' },
-        { value: 60, label: 'Participo brevemente diciendo lo que me parece "justo" desde el sentido común.' },
-        { value: 80, label: 'Presto atención y trato de usar lógica para debatir los vacíos legales.' },
-        { value: 100, label: 'Debato implacablemente usando filosofía del derecho y principios constitucionales.' }
-      ]},
-      { level: 3, q: 'Alguien te confía que está pasando por una crisis emocional destructiva y compleja.', options: [
-        { value: 20, label: 'Me pongo sumamente incómodo, me bloqueo y me voy rápido.' },
-        { value: 40, label: 'Le digo que "eche ganas" e intento cambiar de tema inmediatamente.' },
-        { value: 60, label: 'Lo escucho en silencio un rato y le aconsejo que busque a un profesional.' },
-        { value: 80, label: 'Lo acompaño, le doy consejos e intento subirle el ánimo pacientemente.' },
-        { value: 100, label: 'Lo contengo empáticamente aplicando principios sólidos de validación psicológica.' }
-      ]},
-      { level: 3, q: 'Te ves en el futuro trabajando como juez, abogado de DDHH o psicólogo social.', options: [
-        { value: 20, label: 'De ninguna manera, absorber los problemas de otros me destruiría.' },
-        { value: 40, label: 'No me agrada, preferiría trabajar con máquinas, plantas o números.' },
-        { value: 60, label: 'Tal vez, pero me costaría mucho desconectar del trabajo al llegar a casa.' },
-        { value: 80, label: 'Me parece una carrera muy noble y estaría dispuesto a afrontar el estrés.' },
-        { value: 100, label: 'Absolutamente sí, nací con la vocación de ayudar, mediar y administrar justicia.' }
-      ]}
-    ]
-  },
+  id: 'ebr_dpcc',
+  title: 'Desarrollo Personal y Cívica',
+  questions: [
+    {
+      level: 1,
+      q: 'Si ves que una persona está siendo tratada injustamente o recibe un mal trato, ¿cómo reaccionarías?',
+      options: [
+        { value: 20, label: 'Preferiría no involucrarme porque no sabría cómo actuar.' },
+        { value: 40, label: 'Me preocuparía, pero probablemente esperaría que alguien más intervenga.' },
+        { value: 60, label: 'Intentaría buscar una forma segura de ayudar o avisar a alguien responsable.' },
+        { value: 80, label: 'Buscaría apoyar a la persona y trataría de detener la situación de manera adecuada.' },
+        { value: 100, label: 'Me comprometería activamente a defender a la persona y buscar una solución justa.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si hay un conflicto entre dos grupos de personas en tu entorno, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Preferiría mantenerme al margen y no involucrarme.' },
+        { value: 40, label: 'Evitaría el problema para no generar más tensión.' },
+        { value: 60, label: 'Intentaría mantener una buena relación con ambas partes.' },
+        { value: 80, label: 'Buscaría conversar con las personas para ayudar a encontrar una solución.' },
+        { value: 100, label: 'Intentaría mediar activamente para lograr un acuerdo y mejorar la situación.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si te invitan a participar en un grupo que busca mejorar tu comunidad o defender una causa importante, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Preferiría no participar porque no me gusta asumir ese tipo de responsabilidades.' },
+        { value: 40, label: 'Participaría poco y solo si otras personas me acompañan.' },
+        { value: 60, label: 'Ayudaría en algunas actividades cuando sea necesario.' },
+        { value: 80, label: 'Participaría activamente aportando ideas y apoyando al grupo.' },
+        { value: 100, label: 'Me comprometería mucho porque me motiva ayudar y generar cambios positivos.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando escuchas un debate sobre derechos, leyes o temas sociales importantes, ¿cómo participas?',
+      options: [
+        { value: 20, label: 'Me cuesta mantener la atención porque esos temas no me interesan mucho.' },
+        { value: 40, label: 'Escucho, pero prefiero no opinar porque no conozco suficiente del tema.' },
+        { value: 60, label: 'Comparto mi opinión desde lo que considero justo o correcto.' },
+        { value: 80, label: 'Analizo el tema y trato de expresar mis ideas con argumentos.' },
+        { value: 100, label: 'Disfruto reflexionar, debatir y comprender los principios detrás de las normas y derechos.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si alguien cercano te cuenta que está pasando por un momento emocional difícil, ¿cómo actuarías?',
+      options: [
+        { value: 20, label: 'No sabría cómo reaccionar y preferiría tomar distancia.' },
+        { value: 40, label: 'Intentaría animarlo, aunque no siempre sabría qué decir.' },
+        { value: 60, label: 'Lo escucharía y le recomendaría buscar apoyo si lo necesita.' },
+        { value: 80, label: 'Le brindaría apoyo, compañía y trataría de ayudarlo con paciencia.' },
+        { value: 100, label: 'Escucharía con mucha empatía y buscaría comprender realmente lo que siente.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si imaginas tu futuro trabajando como abogado, psicólogo, juez o en una profesión relacionada con ayudar a otros, ¿qué opinas?',
+      options: [
+        { value: 20, label: 'No sería algo que me gustaría porque prefiero otro tipo de actividades.' },
+        { value: 40, label: 'No estoy muy interesado, aunque reconozco que es importante.' },
+        { value: 60, label: 'Podría considerarlo si encuentro un área que me motive.' },
+        { value: 80, label: 'Me parece una profesión valiosa donde podría aportar a otras personas.' },
+        { value: 100, label: 'Me entusiasma dedicarme a una carrera donde pueda orientar, ayudar y generar impacto.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_ingles',
-    title: 'Inglés como Lengua Extranjera',
-    questions: [
-      { level: 1, q: 'Lanzan un video espectacular de tu interés, pero el audio está totalmente en inglés.', options: [
-        { value: 20, label: 'Me molesto, lo cierro de inmediato y busco otra cosa en español.' },
-        { value: 40, label: 'Lo veo sin entender el audio, solo mirando las imágenes.' },
-        { value: 60, label: 'Activo los subtítulos en español y me olvido por completo del audio.' },
-        { value: 80, label: 'Pongo subtítulos en inglés para intentar relacionar lo que dicen con el texto.' },
-        { value: 100, label: 'Lo escucho atentamente afinando mi oído para entender las frases originales.' }
-      ]},
-      { level: 2, q: 'Un software o juego que necesitas usar obligatoriamente no tiene versión en español.', options: [
-        { value: 20, label: 'Lo desinstalo de inmediato y busco un programa pirata en español.' },
-        { value: 40, label: 'Le doy clic a todo al azar hasta que funcione de casualidad.' },
-        { value: 60, label: 'Me aprendo de memoria la ubicación de los botones sin leer las palabras.' },
-        { value: 80, label: 'Uso un traductor en mi celular para entender los menús que no conozco.' },
-        { value: 100, label: 'Lo configuro en inglés y aprovecho la situación para forzarme a aprender vocabulario.' }
-      ]},
-      { level: 2, q: 'Un turista extranjero se acerca repentinamente y te pide direcciones en inglés.', options: [
-        { value: 20, label: 'Entro en pánico, niego con la cabeza y me voy corriendo.' },
-        { value: 40, label: 'Le hablo en español más lento esperando que por arte de magia me entienda.' },
-        { value: 60, label: 'Le indico la ruta usando muchas señas y palabras sueltas como "go" y "right".' },
-        { value: 80, label: 'Armo oraciones simples en mi cabeza y le explico el camino con calma.' },
-        { value: 100, label: 'Le respondo con total fluidez, amabilidad y buena pronunciación sin dudar.' }
-      ]},
-      { level: 3, q: 'Tienes que leer un manual o paper técnico vital que solo está publicado en inglés.', options: [
-        { value: 20, label: 'Renuncio a la tarea, me declaro incapaz de leerlo.' },
-        { value: 40, label: 'Copio y pego todo el documento en el Traductor de Google sin revisar.' },
-        { value: 60, label: 'Uso el traductor pero trato de corregir las partes que no tienen sentido.' },
-        { value: 80, label: 'Lo leo en inglés pero con un diccionario al lado para las palabras difíciles.' },
-        { value: 100, label: 'Lo leo directamente en inglés con total fluidez técnica y analítica.' }
-      ]},
-      { level: 3, q: 'Te ofrecen un diplomado intensivo y denso sobre fonética y gramática inglesa avanzada.', options: [
-        { value: 20, label: 'Preferiría barrer las calles antes que estudiar estructuras gramaticales inglesas.' },
-        { value: 40, label: 'Rechazo la oferta, la gramática siempre ha sido mi mayor debilidad.' },
-        { value: 60, label: 'Voy arrastrando los pies solo porque sé que me dará puntos en mi currículum.' },
-        { value: 80, label: 'Asisto y pongo mucho empeño para pulir los errores que siempre cometo.' },
-        { value: 100, label: 'Asisto con máxima emoción porque me apasiona dominar el idioma como un nativo.' }
-      ]},
-      { level: 3, q: 'Te ofrecen un empleo de alto nivel ejecutivo donde el 100% de la comunicación es en inglés.', options: [
-        { value: 20, label: 'Renuncio el primer día, la ansiedad de no poder hablar me paralizaría.' },
-        { value: 40, label: 'Rechazo la oferta porque sufriría demasiado tratando de expresarme.' },
-        { value: 60, label: 'Acepto por el sueldo, pero usaría traductores en secreto para sobrevivir.' },
-        { value: 80, label: 'Acepto el reto, me costaría un poco al inicio pero sé que me adaptaré rápido.' },
-        { value: 100, label: 'Sería fantástico, me encantaría vivir inmerso personal y profesionalmente en el idioma.' }
-      ]}
-    ]
-  },
+  id: 'ebr_ingles',
+  title: 'Inglés como Lengua Extranjera',
+  questions: [
+    {
+      level: 1,
+      q: 'Si encuentras un video interesante, pero está completamente en inglés, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'Prefiero buscar otro contenido porque no me siento cómodo con el idioma.' },
+        { value: 40, label: 'Lo veo, pero me cuesta seguirlo porque no entiendo mucho.' },
+        { value: 60, label: 'Uso subtítulos en español para comprender la información.' },
+        { value: 80, label: 'Intento usar subtítulos en inglés para aprender nuevas palabras y expresiones.' },
+        { value: 100, label: 'Lo escucho directamente y trato de comprender el mensaje en el idioma original.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si necesitas usar un programa, aplicación o juego que solo está disponible en inglés, ¿cómo actuarías?',
+      options: [
+        { value: 20, label: 'Preferiría no usarlo porque el idioma sería una dificultad importante para mí.' },
+        { value: 40, label: 'Intentaría usarlo, aunque tendría que pedir ayuda para entender algunas partes.' },
+        { value: 60, label: 'Aprendería las palabras básicas necesarias para poder manejarlo.' },
+        { value: 80, label: 'Buscaría información y aprovecharía la oportunidad para mejorar mi inglés.' },
+        { value: 100, label: 'Lo usaría en inglés sin problema y lo tomaría como una forma de seguir aprendiendo.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si un turista extranjero te pide ayuda y te habla en inglés, ¿cómo responderías?',
+      options: [
+        { value: 20, label: 'Me pondría nervioso y probablemente no sabría cómo responder.' },
+        { value: 40, label: 'Intentaría ayudar con algunas palabras básicas o gestos.' },
+        { value: 60, label: 'Usaría frases sencillas para poder comunicar la idea principal.' },
+        { value: 80, label: 'Intentaría mantener una conversación y explicar con claridad.' },
+        { value: 100, label: 'Respondería con confianza, buena pronunciación y naturalidad.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si tienes que leer un manual o documento importante que solo está en inglés, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Me costaría mucho y buscaría evitar leerlo directamente.' },
+        { value: 40, label: 'Usaría un traductor para entender la mayor parte del contenido.' },
+        { value: 60, label: 'Lo leería con apoyo de herramientas para comprender mejor.' },
+        { value: 80, label: 'Lo leería en inglés ayudándome con un diccionario cuando sea necesario.' },
+        { value: 100, label: 'Lo comprendería directamente y analizaría el contenido en profundidad.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si te ofrecen un curso avanzado de inglés para mejorar tu pronunciación y gramática, ¿qué harías?',
+      options: [
+        { value: 20, label: 'No lo tomaría porque aprender inglés no es una prioridad para mí.' },
+        { value: 40, label: 'Lo consideraría, aunque probablemente me costaría mantener la motivación.' },
+        { value: 60, label: 'Lo tomaría para mejorar mis conocimientos básicos.' },
+        { value: 80, label: 'Me esforzaría bastante para mejorar mis habilidades en el idioma.' },
+        { value: 100, label: 'Me entusiasmaría dominar el idioma y comunicarme con mayor fluidez.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si te ofrecen un trabajo donde toda la comunicación es en inglés, ¿cómo reaccionarías?',
+      options: [
+        { value: 20, label: 'Preferiría no aceptarlo porque no me sentiría preparado.' },
+        { value: 40, label: 'Lo aceptaría solo si tuviera bastante apoyo al inicio.' },
+        { value: 60, label: 'Aceptaría el reto y usaría herramientas para adaptarme.' },
+        { value: 80, label: 'Me esforzaría por mejorar rápidamente y desenvolverme mejor.' },
+        { value: 100, label: 'Me gustaría la oportunidad de trabajar y crecer usando el idioma constantemente.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_ept',
-    title: 'Educación para el Trabajo (EPT)',
-    questions: [
-      { level: 1, q: 'Tienes la oportunidad de ganar un buen dinero extra comprando y vendiendo productos.', options: [
-        { value: 20, label: 'No lo hago, me da demasiada vergüenza y pánico ofrecer cosas a la gente.' },
-        { value: 40, label: 'Trato de venderle solo a mis familiares para no tener que hablar con extraños.' },
-        { value: 60, label: 'Lo hago de mala gana si necesito el dinero urgente, pero no lo disfruto.' },
-        { value: 80, label: 'Me parece una buena idea, me organizo bien para vender rápido.' },
-        { value: 100, label: 'Me emociona la idea de idear estrategias de venta, convencer y ver las ganancias.' }
-      ]},
-      { level: 2, q: 'Tu grupo debe crear y ejecutar un proyecto de emprendimiento para generar fondos.', options: [
-        { value: 20, label: 'No aporto nada, espero que los demás hagan el negocio y yo miro.' },
-        { value: 40, label: 'Hago el trabajo manual o de limpieza, pero me alejo de las finanzas y las ventas.' },
-        { value: 60, label: 'Ayudo en lo que me asignen sin tomar nunca la iniciativa ni el control.' },
-        { value: 80, label: 'Propongo buenas ideas de productos y ayudo activamente a vender.' },
-        { value: 100, label: 'Lidero con fuerza la estrategia corporativa, el marketing y el control del dinero.' }
-      ]},
-      { level: 2, q: 'Te piden diseñar una campaña o plan comercial para lograr que un servicio sea un éxito.', options: [
-        { value: 20, label: 'Delego inmediatamente esa tarea a otro, odio la palabra "comercial".' },
-        { value: 40, label: 'Hago un cartel básico de "Se vende" y doy por terminada la tarea.' },
-        { value: 60, label: 'Uso una publicidad típica y genérica que he visto en todos lados.' },
-        { value: 80, label: 'Pienso en quiénes son los clientes y trato de hacer algo llamativo para ellos.' },
-        { value: 100, label: 'Investigo al consumidor, analizo la competencia y creo una campaña ultra persuasiva.' }
-      ]},
-      { level: 3, q: 'Tienes acceso a un reporte financiero extenso con balances de ganancias de una empresa.', options: [
-        { value: 20, label: 'Lo veo extremadamente aburrido, me marea y lo cierro al instante.' },
-        { value: 40, label: 'Miro solo la última línea para ver si hay un número en rojo o verde.' },
-        { value: 60, label: 'Lo reviso por encima si me lo exigen para cumplir con mi trabajo.' },
-        { value: 80, label: 'Leo con atención las ventas y los gastos para entender cómo funciona la empresa.' },
-        { value: 100, label: 'Analizo meticulosamente márgenes de rentabilidad, flujos de caja y costos fijos.' }
-      ]},
-      { level: 3, q: 'Te proponen crear una "Startup" asumiendo grandes riesgos y pedir préstamos.', options: [
-        { value: 20, label: 'De ninguna manera, yo exijo la paz y seguridad absoluta de un sueldo fijo.' },
-        { value: 40, label: 'Me aterra la idea de deber dinero o fracasar, rechazo la propuesta.' },
-        { value: 60, label: 'Lo pensaría muchísimo y solo lo haría si el riesgo de perder es casi nulo.' },
-        { value: 80, label: 'Acepto si el plan es sólido, estoy dispuesto a trabajar duro por mi propio negocio.' },
-        { value: 100, label: 'Me fascina la adrenalina pura del riesgo corporativo, el emprendimiento y la innovación.' }
-      ]},
-      { level: 3, q: 'Te imaginas tu futuro administrando y dirigiendo la expansión comercial de una multinacional.', options: [
-        { value: 20, label: 'Odio el mundo corporativo capitalista y la presión de los negocios me destruiría.' },
-        { value: 40, label: 'Ser un "ejecutivo" de negocios me parece una vida gris y estresante.' },
-        { value: 60, label: 'Lo haría solo por alcanzar estatus económico, aunque no me guste el trabajo.' },
-        { value: 80, label: 'Me parece una carrera exitosa y desafiante, me prepararía para hacerlo bien.' },
-        { value: 100, label: 'Es mi máximo sueño, nací para liderar grandes cadenas de valor en el mundo.' }
-      ]}
-    ]
-  },
+  id: 'ebr_ept',
+  title: 'Educación para el Trabajo',
+  questions: [
+    {
+      level: 1,
+      q: 'Si tienes una idea para crear un pequeño negocio o proyecto, ¿qué harías primero?',
+      options: [
+        { value: 20, label: 'Probablemente no intentaría desarrollarla porque no sabría por dónde empezar.' },
+        { value: 40, label: 'La comentaría con otras personas, pero no avanzaría mucho con la idea.' },
+        { value: 60, label: 'Intentaría organizar algunas ideas básicas para ponerla en práctica.' },
+        { value: 80, label: 'Investigo, planifico y busco la manera de convertir la idea en un proyecto real.' },
+        { value: 100, label: 'Me entusiasma crear soluciones, organizar un plan y buscar oportunidades para hacerlo crecer.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando tienes que trabajar en equipo para lograr un objetivo, ¿qué papel sueles asumir?',
+      options: [
+        { value: 20, label: 'Prefiero que otras personas organicen el trabajo y yo seguir indicaciones.' },
+        { value: 40, label: 'Participo cuando me asignan una tarea específica.' },
+        { value: 60, label: 'Cumplo con mi responsabilidad y apoyo al equipo cuando es necesario.' },
+        { value: 80, label: 'Propongo ideas y ayudo a organizar el trabajo para lograr mejores resultados.' },
+        { value: 100, label: 'Me gusta liderar, motivar al equipo y buscar nuevas formas de mejorar.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si tienes que aprender una nueva herramienta digital para un trabajo o proyecto, ¿cómo actuarías?',
+      options: [
+        { value: 20, label: 'Me frustraría fácilmente y preferiría que otra persona lo haga.' },
+        { value: 40, label: 'Intentaría aprender lo básico con ayuda de alguien más.' },
+        { value: 60, label: 'Buscaría aprender lo necesario para poder utilizarla.' },
+        { value: 80, label: 'Exploraría la herramienta y practicaría hasta manejarla mejor.' },
+        { value: 100, label: 'Me motivaría aprenderla porque disfruto descubrir nuevas tecnologías y formas de trabajar.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si un proyecto en el que trabajas no obtiene los resultados esperados, ¿qué harías?',
+      options: [
+        { value: 20, label: 'Me desanimaría y preferiría dejarlo de lado.' },
+        { value: 40, label: 'Buscaría ayuda para saber qué salió mal.' },
+        { value: 60, label: 'Revisaría los errores e intentaría mejorar algunos aspectos.' },
+        { value: 80, label: 'Analizaría la situación y propondría cambios para mejorar el proyecto.' },
+        { value: 100, label: 'Vería el problema como una oportunidad para aprender, innovar y encontrar nuevas soluciones.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando tienes que organizar tu tiempo entre estudios, responsabilidades y actividades personales, ¿cómo lo haces?',
+      options: [
+        { value: 20, label: 'Me cuesta organizarme y suelo dejar las cosas para después.' },
+        { value: 40, label: 'Intento cumplir, aunque a veces pierdo el orden de mis actividades.' },
+        { value: 60, label: 'Organizo mis tareas según lo que considero más importante.' },
+        { value: 80, label: 'Planifico mis actividades para aprovechar mejor mi tiempo.' },
+        { value: 100, label: 'Me gusta establecer metas, organizar procesos y buscar formas de ser más eficiente.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si tuvieras la oportunidad de crear un producto o servicio para solucionar una necesidad, ¿cómo lo tomarías?',
+      options: [
+        { value: 20, label: 'No sería algo que me interesaría porque prefiero actividades más conocidas.' },
+        { value: 40, label: 'Me parecería interesante, aunque no sabría cómo desarrollarlo.' },
+        { value: 60, label: 'Intentaría crear una idea sencilla que pueda funcionar.' },
+        { value: 80, label: 'Investigarías las necesidades de las personas y buscaría una buena solución.' },
+        { value: 100, label: 'Me entusiasmaría crear algo nuevo, innovador y con impacto para otros.' }
+      ]
+    }
+  ]
+},
   {
-    id: 'ebr_arte_cultura',
-    title: 'Arte y Cultura',
-    questions: [
-      { level: 1, q: 'Pasas por una plaza y hay un músico tocando o un pintor trabajando muy concentrado.', options: [
-        { value: 20, label: 'Paso de largo rápidamente quejándome del ruido o estorbo.' },
-        { value: 40, label: 'Los ignoro completamente, no les presto la más mínima atención.' },
-        { value: 60, label: 'Me detengo un par de segundos si me llama la atención visualmente, y luego sigo.' },
-        { value: 80, label: 'Me quedo a observar su trabajo, lo aprecio y lo aplaudo.' },
-        { value: 100, label: 'Me quedo un gran rato inmerso admirando la técnica, el esfuerzo y la expresión pura.' }
-      ]},
-      { level: 2, q: 'Te asignan la tarea de armar la estética, colores y diseño visual de un documento.', options: [
-        { value: 20, label: 'Uso texto negro puro sobre fondo blanco, me importa cero lo visual.' },
-        { value: 40, label: 'Le pido a un compañero que lo haga él porque yo "no tengo buen ojo".' },
-        { value: 60, label: 'Elijo una plantilla predeterminada genérica para salir del paso rápido.' },
-        { value: 80, label: 'Intento combinar colores y fuentes para que se vea bastante atractivo y limpio.' },
-        { value: 100, label: 'Cuido obsesivamente la teoría del color, las tipografías y el impacto artístico.' }
-      ]},
-      { level: 2, q: 'Tienes un fin de semana libre y te regalan entradas VIP para una muestra de arte o teatro clásico.', options: [
-        { value: 20, label: 'Se las regalo o vendo a otra persona, prefiero dormir o jugar videojuegos.' },
-        { value: 40, label: 'Voy obligado por no perder el dinero, pero me aburro durante todo el evento.' },
-        { value: 60, label: 'Voy para salir de casa un rato, pero lo veo como una actividad normal.' },
-        { value: 80, label: 'Voy con interés, tomo fotos y trato de entender el mensaje de la obra.' },
-        { value: 100, label: 'Voy con altísima emoción y disfruto analizando cada minucioso detalle de las obras.' }
-      ]},
-      { level: 3, q: 'Te invitan a practicar un instrumento, danza o técnica de pintura rigurosa diariamente.', options: [
-        { value: 20, label: 'Abandono al primer día, me frustra inmensamente no ser bueno de inmediato.' },
-        { value: 40, label: 'Pongo excusas para faltar a los ensayos porque me da mucha pereza la rutina.' },
-        { value: 60, label: 'Lo haría solo intermitentemente como un pasatiempo relajado y sin compromiso.' },
-        { value: 80, label: 'Practico con disciplina porque me gusta ver cómo mejoro mi arte con el tiempo.' },
-        { value: 100, label: 'Entrenaría obsesivamente durante horas diarias buscando alcanzar la perfección técnica.' }
-      ]},
-      { level: 3, q: 'Estás en un foro de críticos donde analizan profundamente la historia del arte o la teoría musical.', options: [
-        { value: 20, label: 'Siento que hablan en otro idioma, me voy del lugar por aburrimiento extremo.' },
-        { value: 40, label: 'Me quedo callado mirando el reloj esperando a que termine la charla.' },
-        { value: 60, label: 'Escucho en silencio para culturizarme un poco, pero no opino nada.' },
-        { value: 80, label: 'Hago preguntas para entender las diferentes escuelas o corrientes artísticas.' },
-        { value: 100, label: 'Me fascina intervenir, debatir, criticar e interpretar significados estéticos profundos.' }
-      ]},
-      { level: 3, q: '¿Renunciarías a una carrera tradicional segura para vivir exclusivamente de tu propia creación artística?', options: [
-        { value: 20, label: 'Jamás, me parece un acto de locura e irracionalidad financiera absoluta.' },
-        { value: 40, label: 'No lo haría, el arte debe ser solo un pasatiempo para no morir de hambre.' },
-        { value: 60, label: 'Solo lo haría si una disquera o galería me firma un contrato millonario previo.' },
-        { value: 80, label: 'Lo pensaría seriamente si veo que mi talento tiene demanda en el mercado real.' },
-        { value: 100, label: 'Sí, sin dudarlo; la necesidad de expresar mi arte supera cualquier comodidad económica.' }
-      ]}
-    ]
-  },
+  id: 'ebr_arte_cultura',
+  title: 'Arte y Cultura',
+  questions: [
+    {
+      level: 1,
+      q: 'Cuando escuchas música, ves una obra de arte o una presentación cultural, ¿qué suele llamar más tu atención?',
+      options: [
+        { value: 20, label: 'No suelo prestar mucha atención porque no es un tema que me interese demasiado.' },
+        { value: 40, label: 'Lo disfruto, pero no suelo analizar mucho lo que representa.' },
+        { value: 60, label: 'Me gusta observar y conocer la idea principal detrás de la obra.' },
+        { value: 80, label: 'Me interesa descubrir el significado, la técnica y la historia detrás de la creación.' },
+        { value: 100, label: 'Me apasiona analizar y comprender cómo el arte expresa ideas, emociones y culturas.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Si te piden crear un dibujo, diseño, video o presentación creativa, ¿cómo lo tomarías?',
+      options: [
+        { value: 20, label: 'Me incomodaría porque no siento mucha confianza en mis habilidades creativas.' },
+        { value: 40, label: 'Lo haría siguiendo ejemplos o instrucciones para cumplir con la tarea.' },
+        { value: 60, label: 'Intentaría crear algo sencillo usando mis propias ideas.' },
+        { value: 80, label: 'Disfrutaría el proceso de crear y buscaría una forma original de expresarme.' },
+        { value: 100, label: 'Me entusiasmaría experimentar, innovar y transformar ideas en una creación artística.' }
+      ]
+    },
+    {
+      level: 2,
+      q: 'Cuando conoces una tradición, costumbre o manifestación cultural de otro lugar, ¿qué haces?',
+      options: [
+        { value: 20, label: 'Normalmente no me interesa mucho conocer sobre otras culturas.' },
+        { value: 40, label: 'La observo por curiosidad, pero sin investigar más.' },
+        { value: 60, label: 'Aprendo algunos aspectos básicos para entenderla mejor.' },
+        { value: 80, label: 'Investigo su historia, significado y la importancia que tiene para las personas.' },
+        { value: 100, label: 'Me interesa profundamente comprender cómo las culturas reflejan la identidad de una sociedad.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si tuvieras la oportunidad de participar en una obra de teatro, exposición o proyecto artístico, ¿cómo reaccionarías?',
+      options: [
+        { value: 20, label: 'Preferiría no participar porque no me sentiría cómodo en ese ambiente.' },
+        { value: 40, label: 'Participaría solo si fuera necesario o si alguien me acompaña.' },
+        { value: 60, label: 'Aceptaría para aprender y vivir una nueva experiencia.' },
+        { value: 80, label: 'Me gustaría participar y aportar mis ideas al proyecto.' },
+        { value: 100, label: 'Me emocionaría formar parte de una creación donde pueda expresarme y conectar con otros.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Cuando tienes una idea nueva para una historia, canción, diseño o creación, ¿qué haces normalmente?',
+      options: [
+        { value: 20, label: 'La dejo pasar porque no suelo desarrollar ese tipo de ideas.' },
+        { value: 40, label: 'La pienso un momento, pero pocas veces la llevo a cabo.' },
+        { value: 60, label: 'Intento desarrollarla de alguna manera sencilla.' },
+        { value: 80, label: 'Busco darle forma y convertirla en un proyecto creativo.' },
+        { value: 100, label: 'Me motiva crear, experimentar y convertir mis ideas en algo nuevo.' }
+      ]
+    },
+    {
+      level: 3,
+      q: 'Si pudieras trabajar en una carrera relacionada con diseño, música, comunicación visual o arte, ¿qué pensarías?',
+      options: [
+        { value: 20, label: 'No sería una opción que elegiría porque prefiero otros campos.' },
+        { value: 40, label: 'Me parece interesante, aunque no estoy seguro de dedicarme a eso.' },
+        { value: 60, label: 'Podría considerarlo si encuentro un área artística que me motive.' },
+        { value: 80, label: 'Me gustaría porque podría crear, comunicar ideas y desarrollar mi talento.' },
+        { value: 100, label: 'Me entusiasma una carrera donde pueda innovar y expresar mi creatividad.' }
+      ]
+    }
+  ]
+},
   {
     id: 'ebr_educacion_fisica',
     title: 'Educación Física y Deportes',
