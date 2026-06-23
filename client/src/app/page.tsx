@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, ArrowLeft, BrainCircuit, Activity, Sparkles } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ArrowRight, ArrowLeft, BrainCircuit, Activity, Sparkles, Check } from "lucide-react";
 
 type AppState = "START" | "TEST" | "CALCULATING" | "RESULTS";
 
@@ -15,6 +15,21 @@ export default function Home() {
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [results, setResults] = useState<CareerRecommendation[]>([]);
   const [history, setHistory] = useState<{ dimIndex: number, subIndex: number, scoreDimId: string }[]>([]);
+
+  const currentOptions = useMemo(() => {
+    if (appState !== "TEST") return [];
+    const dim = DIMENSIONS[currentDimIndex];
+    if (!dim) return [];
+    const question = dim.questions[currentSubIndex];
+    if (!question) return [];
+    
+    const options = [...question.options];
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+    return options;
+  }, [currentDimIndex, currentSubIndex, appState]);
 
   const handleStart = () => setAppState("TEST");
 
@@ -184,21 +199,21 @@ export default function Home() {
               </div>
               
               <h2 className="text-2xl md:text-3xl font-semibold text-white mb-10 leading-relaxed">
-                <span className="text-blue-500 font-black mr-3">Escenario:</span>
+                {/* <span className="text-blue-500 font-black mr-3">Escenario:</span> */}
                 {DIMENSIONS[currentDimIndex].questions[currentSubIndex].q}
               </h2>
               
               <div className="flex flex-col gap-4">
-                {DIMENSIONS[currentDimIndex].questions[currentSubIndex].options.map((opt, index) => {
+                {currentOptions.map((opt) => {
                   const isSelected = dimensionScores[DIMENSIONS[currentDimIndex].id]?.[currentSubIndex] === opt.value;
                   return (
                     <button 
-                      key={index} 
+                      key={opt.value} 
                       onClick={() => handleAnswer(opt.value)}
                       className={`w-full text-left px-5 md:px-8 py-5 md:py-6 rounded-2xl text-base md:text-lg transition-all duration-300 flex items-center gap-6 group border relative overflow-hidden ${isSelected ? 'bg-blue-600/30 border-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.2)] text-white ring-1 ring-blue-500' : 'bg-slate-900/40 border-white/5 text-slate-300 hover:bg-blue-600/20 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.3)]'}`}
                     >
-                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors border font-mono text-sm ${isSelected ? 'bg-blue-500 border-blue-400 text-white shadow-lg shadow-blue-500/50' : 'border-slate-700 bg-slate-800 text-slate-500 group-hover:bg-blue-500 group-hover:border-blue-400 group-hover:text-white'}`}>
-                        {index + 1}
+                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors border ${isSelected ? 'bg-blue-500 border-blue-400 text-white shadow-lg shadow-blue-500/50' : 'border-slate-700 bg-slate-800 text-transparent group-hover:bg-blue-500 group-hover:border-blue-400 group-hover:text-white'}`}>
+                        <Check size={16} strokeWidth={3} className={isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-opacity'} />
                       </div>
                       <span className={`leading-relaxed transition-colors relative z-10 ${isSelected ? 'text-white font-medium' : 'group-hover:text-white'}`}>{opt.label}</span>
                     </button>
