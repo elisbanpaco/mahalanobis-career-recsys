@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Compass, UserCheck, BookOpen, Orbit } from "lucide-react";
+import { Compass, UserCheck, BookOpen, Orbit, BarChart } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,24 +28,31 @@ export default function RootLayout({
                 </span>
               </Link>
               
-              <div className="flex items-center gap-2 md:gap-4">
+              <div className="flex items-center gap-1 md:gap-2">
                 <Link 
                   href="/" 
-                  className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                  className="flex items-center gap-2 px-2 py-2 md:px-3 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
                 >
                   <Compass size={18} className="text-blue-400" />
                   <span className="hidden md:block">Evaluación</span>
                 </Link>
                 <Link 
+                  href="/perfil" 
+                  className="flex items-center gap-2 px-2 py-2 md:px-3 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                >
+                  <BarChart size={18} className="text-rose-400" />
+                  <span className="hidden md:block">Perfil</span>
+                </Link>
+                <Link 
                   href="/arquetipo" 
-                  className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                  className="flex items-center gap-2 px-2 py-2 md:px-3 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
                 >
                   <UserCheck size={18} className="text-indigo-400" />
                   <span className="hidden md:block">Arquetipos</span>
                 </Link>
                 <Link 
                   href="/fundamentos" 
-                  className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                  className="flex items-center gap-2 px-2 py-2 md:px-3 md:py-2 rounded-lg text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
                 >
                   <BookOpen size={18} className="text-emerald-400" />
                   <span className="hidden md:block">Fundamentos</span>
