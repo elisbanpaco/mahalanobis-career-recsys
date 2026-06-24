@@ -45,7 +45,7 @@ const FAQS = [
 ];
 
 export default function FundamentosPage() {
-  const [openFaq, setOpenFaq] = useState<number | 0>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <div className="relative min-h-screen pt-24 pb-24 overflow-hidden">
