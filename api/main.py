@@ -36,7 +36,7 @@ FEATURES = [
 async def startup_event():
     global careers_df, recommender
     try:
-        data_path_careers = os.path.join(os.path.dirname(__file__), '..', 'data', 'careers.csv')
+        data_path_careers = os.path.join(os.path.dirname(__file__), '..', 'data', 'careers.csv') # Lee el perfil de la matriz de carreras UNAP (16D) validada por profesionales del area
         careers_df = pd.read_csv(data_path_careers)
         recommender = CareerRecommenderMahalanobis(careers_df, FEATURES)
         print("✅ Sistema de recomendación inicializado correctamente.")
