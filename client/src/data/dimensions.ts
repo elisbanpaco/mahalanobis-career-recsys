@@ -593,388 +593,581 @@ export const DIMENSIONS: Dimension[] = [
     }
   ]
 },
+// Educación Física y Deportes
   {
     id: 'ebr_educacion_fisica',
     title: 'Educación Física y Deportes',
     questions: [
-      { level: 1, q: 'Es tu único día de descanso y te proponen salir a correr, nadar o jugar un partido intenso.', options: [
-        { value: 20, label: 'Invento una excusa médica para no moverme de mi cama en todo el día.' },
-        { value: 40, label: 'Digo que sí pero voy de mala gana, solo para que dejen de insistir.' },
-        { value: 60, label: 'Voy para sudar un rato, caminar y conversar, pero sin exigirme mucho.' },
-        { value: 80, label: 'Me gusta la idea, me pongo ropa deportiva y salgo a dar lo mejor de mí.' },
-        { value: 100, label: 'Salto de la cama emocionado por quemar energía y disfrutar el desgaste físico.' }
-      ]},
-      { level: 2, q: 'Estás compitiendo en un torneo deportivo escolar oficial representando a tu salón.', options: [
-        { value: 20, label: 'Me escondo en la defensa o evito la pelota a toda costa por miedo a fallar.' },
-        { value: 40, label: 'Juego sin ganas, si perdemos o ganamos me da exactamente igual.' },
-        { value: 60, label: 'Juego tranquilo para divertirme y cumplir, sin estresarme por el resultado.' },
-        { value: 80, label: 'Me concentro, hago estrategias con el equipo y corro bastante para intentar ganar.' },
-        { value: 100, label: 'Me transformo, exijo mi cuerpo al límite absoluto y dejo el alma por la victoria.' }
-      ]},
-      { level: 2, q: 'Lees un artículo científico sobre cómo ciertos nutrientes y rutinas cambian la musculatura.', options: [
-        { value: 20, label: 'Paso de largo inmediatamente, como lo que haya y detesto las dietas o rutinas.' },
-        { value: 40, label: 'Me parece demasiado esfuerzo andar calculando lo que como, lo cierro.' },
-        { value: 60, label: 'Lo leo por curiosidad superficial pero no cambio mis hábitos alimenticios.' },
-        { value: 80, label: 'Me parece información muy útil e intento comer más sano a partir de eso.' },
-        { value: 100, label: 'Lo estudio a detalle y modifico milimétricamente mi régimen de nutrición y rutina.' }
-      ]},
-      { level: 3, q: 'Te proponen estudiar a fondo la biomecánica, las articulaciones y los umbrales del dolor.', options: [
-        { value: 20, label: 'Me da demasiada pereza aprender tantos términos médicos y biológicos.' },
-        { value: 40, label: 'Me parece un tema muy denso, preferiría solo ir al gimnasio sin tanta teoría.' },
-        { value: 60, label: 'Lo estudiaría solo para aprobar si fuera una materia obligatoria en el colegio.' },
-        { value: 80, label: 'Me interesaría para poder entrenar mejor y evitar lesiones en el futuro.' },
-        { value: 100, label: 'Me fascinaría comprender minuciosamente cómo funciona la increíble máquina del cuerpo.' }
-      ]},
-      { level: 3, q: '¿Te someterías voluntariamente a una rutina casi militar de entrenamiento físico de alto rendimiento?', options: [
-        { value: 20, label: 'Renuncio y me voy a mi casa llorando o enojado en los primeros 5 minutos.' },
-        { value: 40, label: 'Fingiría una lesión para salirme de ese nivel de tortura física.' },
-        { value: 60, label: 'Aguantaría lo más que pueda sin matarme, pero al final me retiraría exhausto.' },
-        { value: 80, label: 'Trataría de terminarla con orgullo, superando mi cansancio mental.' },
-        { value: 100, label: 'Soportaría el dolor con disciplina estoica diaria para destruir mis propios límites.' }
-      ]},
-      { level: 3, q: 'Te ves dedicando tu vida profesional exclusivamente como atleta de élite, fisioterapeuta o coach.', options: [
-        { value: 20, label: 'Para nada, desprecio esa vida; mi éxito debe estar en una silla y una oficina.' },
-        { value: 40, label: 'El cuerpo envejece rápido, buscaría algo más seguro y menos agotador físicamente.' },
-        { value: 60, label: 'Tal vez lo mantendría como un "plan B" o un hobby de fin de semana, nada más.' },
-        { value: 80, label: 'Me parece una carrera hermosa, saludable y respetable, la tomaría en serio.' },
-        { value: 100, label: 'Definitivamente; el deporte, el movimiento y la actividad física son mi verdadera vida.' }
-      ]}
+      {
+        level: 1,
+        q: 'Es tu único día de descanso y te proponen salir a correr, nadar o jugar un partido intenso, ¿cómo haces?',
+        options: [
+          { value: 20, label: 'Prefiero quedarme descansando en casa y evitar cualquier actividad física pesada.' },
+          { value: 40, label: 'Iría por compromiso social, pero preferiría hacer algo menos cansado.' },
+          { value: 60, label: 'Aceptaría para pasar el rato y recrearme, sin tomármelo con mucha exigencia.' },
+          { value: 80, label: 'Me parece una excelente idea para mantenerme activo y disfrutar del ejercicio.' },
+          { value: 100, label: 'Me entusiasma mucho la propuesta y disfruto el reto físico de dar mi máximo rendimiento.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Estás compitiendo en un torneo deportivo escolar o local representando a tu equipo, ¿qué actitud sueles tomar?',
+        options: [
+          { value: 20, label: 'Prefiero tener un rol muy pasivo o secundario para no cometer errores importantes.' },
+          { value: 40, label: 'Juego para cumplir, pero no me involucro emocionalmente en el resultado del partido.' },
+          { value: 60, label: 'Participo de forma tranquila, buscando divertirme y pasar un buen rato con mis compañeros.' },
+          { value: 80, label: 'Me esfuerzo bastante, sigo la estrategia del equipo y busco activamente ganar el encuentro.' },
+          { value: 100, label: 'Me concentro al máximo, pongo toda mi energía en cada jugada y lidero al equipo hacia la victoria.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Lees un artículo sobre cómo el ejercicio y la nutrición modifican y mejoran el funcionamiento muscular, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'No le presto atención, prefiero no preocuparme por dietas ni rutinas de entrenamiento.' },
+          { value: 40, label: 'Lo leo por encima, pero no me interesa aplicar este tipo de pautas en mi día a día.' },
+          { value: 60, label: 'Me parece informativo, aunque solo aplicaría algún consejo sencillo si me resulta muy fácil.' },
+          { value: 80, label: 'Encuentro los datos útiles y trato de ajustar mis hábitos de alimentación y ejercicio para estar saludable.' },
+          { value: 100, label: 'Me interesa a fondo el tema, investigo el fundamento científico y ajusto detalladamente mi rutina y nutrición.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te proponen estudiar a fondo la anatomía humana, la biomecánica de los movimientos y la recuperación física, ¿qué opinas al respecto?',
+        options: [
+          { value: 20, label: 'Prefiero evitarlo, me resulta tedioso estudiar temas relacionados con la biología o el cuerpo.' },
+          { value: 40, label: 'Lo estudiaría solo por cumplir con un requisito académico obligatorio.' },
+          { value: 60, label: 'Me parece un tema interesante para conocer lo básico sobre cómo funciona el cuerpo.' },
+          { value: 80, label: 'Me gustaría aprender sobre ello para mejorar mi rendimiento deportivo y evitar posibles lesiones.' },
+          { value: 100, label: 'Me entusiasma profundizar en el análisis científico del movimiento y el cuidado del cuerpo humano.' }
+        ]
+      },
+      {
+        level: 3,
+        q: '¿Cómo reaccionarías si tuvieras que seguir un plan de entrenamiento físico altamente exigente y estructurado?',
+        options: [
+          { value: 20, label: 'Lo abandonaría rápidamente, no me atrae seguir rutinas con ese nivel de esfuerzo y disciplina física.' },
+          { value: 40, label: 'Intentaría hacerlo, pero probablemente me costaría mucho ser constante y lo dejaría a los pocos días.' },
+          { value: 60, label: 'Cumpliría con las sesiones básicas sin exigirme más allá de lo que me resulte cómodo.' },
+          { value: 80, label: 'Me comprometería a seguir la rutina con constancia para superarme físicamente.' },
+          { value: 100, label: 'Asumiría el reto con total disciplina y motivación para alcanzar el mejor estado físico posible.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si imaginas tu futuro profesional dedicado a la preparación física, el entrenamiento deportivo o la kinesiología/fisioterapia, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'No me interesa en absoluto, prefiero desarrollarme en áreas alejadas de la actividad física.' },
+          { value: 40, label: 'Me parece un sector respetable, pero no me veo trabajando en él a largo plazo.' },
+          { value: 60, label: 'Podría considerarlo si está relacionado con la salud de forma general o como una actividad complementaria.' },
+          { value: 80, label: 'Lo veo como una carrera atractiva y saludable donde podría guiar a otros a mejorar su bienestar físico.' },
+          { value: 100, label: 'Me apasiona la idea de dedicar mi vida al deporte, la rehabilitación y el entrenamiento de alto nivel.' }
+        ]
+      }
     ]
   },
   {
     id: 'ebr_religion',
     title: 'Ética, Valores y Espiritualidad',
     questions: [
-      { level: 1, q: 'Alguien empieza a hablar profundamente sobre el sentido espiritual de la vida, el bien y el mal.', options: [
-        { value: 20, label: 'Le cambio de tema agresivamente, me fastidian esas conversaciones místicas o moralistas.' },
-        { value: 40, label: 'Saco mi celular y me distraigo hasta que deje de hablar de eso.' },
-        { value: 60, label: 'Lo escucho en silencio por cortesía, pero sus ideas no resuenan en mí.' },
-        { value: 80, label: 'Escucho con atención y aporto mi propia visión sobre lo que es éticamente correcto.' },
-        { value: 100, label: 'Participo con gran entusiasmo, la reflexión existencial me llena profundamente.' }
-      ]},
-      { level: 2, q: 'Tu comunidad organiza una jornada de trabajo duro y gratuito para ayudar a personas sin hogar.', options: [
-        { value: 20, label: 'Me escondo e invento una mentira diciendo que estoy enfermo para no ir.' },
-        { value: 40, label: 'Me parece bien que otros lo hagan, pero yo prefiero quedarme descansando en casa.' },
-        { value: 60, label: 'Doy una donación económica pequeña para cumplir, pero prefiero no ir físicamente.' },
-        { value: 80, label: 'Asisto un par de horas, ayudo a repartir cosas y me retiro satisfecho.' },
-        { value: 100, label: 'Voy voluntariamente de principio a fin, trabajando duro y conectando con los afectados.' }
-      ]},
-      { level: 2, q: 'Ocurre una gran tragedia mundial y alguien pregunta por qué hay tanto sufrimiento en el mundo.', options: [
-        { value: 20, label: 'Digo "cosas que pasan" o "qué mala suerte" para cortar el tema denso de raíz.' },
-        { value: 40, label: 'Culpo rápidamente a los políticos o al clima sin pensar en nada más profundo.' },
-        { value: 60, label: 'Doy una respuesta genérica como "el mundo es injusto" y sigo con mi vida.' },
-        { value: 80, label: 'Me tomo el tiempo de reflexionar sobre la bondad humana y nuestras responsabilidades.' },
-        { value: 100, label: 'Reflexiono profundamente sobre la filosofía, la teodicea y el propósito del sufrimiento.' }
-      ]},
-      { level: 3, q: 'Te regalan un tomo enciclopédico sobre teología compleja, ética pura y la historia de las religiones.', options: [
-        { value: 20, label: 'Lo tiro a la basura o lo uso para atrancar una puerta, no tolero esos textos.' },
-        { value: 40, label: 'Lo dejo empolvándose en el fondo de mi cuarto, jamás abriría algo tan denso.' },
-        { value: 60, label: 'Leo un par de páginas si el título me llama la atención, pero me aburro rápido.' },
-        { value: 80, label: 'Lo leo poco a poco porque me interesa conocer las creencias éticas de la humanidad.' },
-        { value: 100, label: 'Lo estudio rigurosamente con inmenso interés analítico, antropológico y espiritual.' }
-      ]},
-      { level: 3, q: '¿Sacrificarías un gran salario y lujos de por vida por trabajar en una ONG de servicio social puro?', options: [
-        { value: 20, label: 'De ninguna manera, mi máxima prioridad y dios es mi riqueza personal y comodidad.' },
-        { value: 40, label: 'Me llamaría "tonto" a mí mismo por perder la oportunidad de hacerme millonario.' },
-        { value: 60, label: 'Lo haría solo de joven por la experiencia, pero luego buscaría dinero y estabilidad.' },
-        { value: 80, label: 'Lo consideraría seriamente si mi labor allí realmente salva vidas o cambia el mundo.' },
-        { value: 100, label: 'Sí, el servicio absoluto al prójimo y mi vocación moral me enriquecen más que el oro.' }
-      ]},
-      { level: 3, q: 'Te ves en el futuro trabajando profesionalmente como filósofo ético, consejero espiritual o líder ONG.', options: [
-        { value: 20, label: 'Me daría asco esa vida, me incomoda muchísimo ser visto como un "santo" o guía moral.' },
-        { value: 40, label: 'Lo evitaría, no tengo la paciencia ni la limpieza moral para andar guiando a otros.' },
-        { value: 60, label: 'No es mi plan en absoluto, pero si la vida me arrastra a ello, haría lo que pueda.' },
-        { value: 80, label: 'Me parece una carrera súper honorable e impactante, sería un orgullo dedicarme a eso.' },
-        { value: 100, label: 'Siento una vocación espiritual innegable para guiar éticamente a grandes grupos de almas.' }
-      ]}
+      {
+        level: 1,
+        q: 'Alguien empieza a hablar profundamente sobre el sentido espiritual de la vida, el bien y el mal, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Prefiero cambiar de tema, ya que no suelo interesarme en debates existenciales o morales.' },
+          { value: 40, label: 'Escucho pero sin comprometerme, pues no es una conversación que capte mi atención.' },
+          { value: 60, label: 'Escucho con respeto, aunque estas reflexiones no influyen demasiado en mi forma de pensar.' },
+          { value: 80, label: 'Escucho atentamente y comparto mis propios puntos de vista sobre los valores humanos.' },
+          { value: 100, label: 'Participo activamente y me entusiasma profundizar en el sentido ético y espiritual de nuestras acciones.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Tu comunidad organiza una jornada de voluntariado para apoyar a familias en situación de vulnerabilidad, ¿cómo decides participar?',
+        options: [
+          { value: 20, label: 'Prefiero no asistir ni participar, ya que priorizo mi tiempo libre en otras actividades personales.' },
+          { value: 40, label: 'Apoyo la iniciativa, pero prefiero no involucrarme directamente en el trabajo físico.' },
+          { value: 60, label: 'Colaboraría de forma breve o con un aporte sencillo si la mayoría de mis conocidos asiste.' },
+          { value: 80, label: 'Asisto con buena disposición para colaborar en lo que sea necesario y ayudar a la comunidad.' },
+          { value: 100, label: 'Participo de manera comprometida durante toda la jornada, organizando y apoyando directamente a los beneficiarios.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Ocurre un desastre natural importante y en tu entorno se debate sobre las razones de la adversidad y la resiliencia humana, ¿qué opinas al respecto?',
+        options: [
+          { value: 20, label: 'Trato de evitar la conversación, ya que prefiero no enfocarme en situaciones tristes o complejas.' },
+          { value: 40, label: 'Expreso una opinión rápida sobre las consecuencias visibles sin entrar a analizar el fondo.' },
+          { value: 60, label: 'Opino de manera general sobre lo difícil de la situación y sigo atento a las noticias.' },
+          { value: 80, label: 'Reflexiono sobre la importancia de la solidaridad y el apoyo mutuo frente a la adversidad.' },
+          { value: 100, label: 'Analizo profundamente el impacto humano, las lecciones éticas y la capacidad de superación de la sociedad.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te prestan un libro sobre filosofía ética, teología comparada o historia de las religiones, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'Lo devolvería pronto, pues los temas filosóficos o religiosos no son de mi interés.' },
+          { value: 40, label: 'Lo conservaría por cortesía, pero es poco probable que dedique tiempo a leerlo.' },
+          { value: 60, label: 'Leería alguna sección corta que me llame la atención por curiosidad general.' },
+          { value: 80, label: 'Lo leería con interés para comprender mejor los sistemas de valores de diferentes culturas.' },
+          { value: 100, label: 'Lo estudiaría con entusiasmo para analizar a fondo los dilemas éticos y las corrientes espirituales.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si tuvieras la oportunidad de trabajar en una organización sin fines de lucro (ONG) con fines sociales, aunque el salario sea modesto, ¿qué harías?',
+        options: [
+          { value: 20, label: 'No la aceptaría, para mí es fundamental priorizar una estabilidad económica y crecimiento material.' },
+          { value: 40, label: 'Sería difícil que acepte, a menos que no tuviera otra opción de empleo en ese momento.' },
+          { value: 60, label: 'Lo consideraría como una experiencia temporal de aprendizaje, pero buscando luego mejores ingresos.' },
+          { value: 80, label: 'Aceptaría la oportunidad si el propósito de la organización se alinea con mis valores personales.' },
+          { value: 100, label: 'Aceptaría con total convencimiento, ya que para mí el impacto social y el servicio ético son la mayor retribución.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si en el futuro te ves trabajando en la resolución de dilemas éticos, orientación comunitaria o liderazgo en causas sociales, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'No me interesa en absoluto, prefiero roles con funciones de carácter más técnico u operativo.' },
+          { value: 40, label: 'No es mi primera opción, considero que liderar el bienestar de otros requiere un perfil que no tengo.' },
+          { value: 60, label: 'Podría colaborar de vez en cuando, pero no como mi ocupación principal.' },
+          { value: 80, label: 'Me parecería una labor sumamente noble y gratificante a la que me adaptaría con responsabilidad.' },
+          { value: 100, label: 'Me motivaría plenamente guiar y acompañar a otros desde una perspectiva ética y comunitaria.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_tic',
     title: 'Tecnología de la Información (TIC)',
     questions: [
-      { level: 1, q: 'En tu trabajo o escuela te obligan a usar un nuevo software informático complejo para tus tareas.', options: [
-        { value: 20, label: 'Me niego a usarlo, exijo seguir usando papel o herramientas antiguas.' },
-        { value: 40, label: 'Pido desesperadamente a alguien que me instale todo y me dicte qué botones presionar.' },
-        { value: 60, label: 'Aprendo a usar solo los tres botones que necesito para cumplir mi tarea y listo.' },
-        { value: 80, label: 'Busco tutoriales en YouTube y aprendo a manejarlo con bastante soltura.' },
-        { value: 100, label: 'Exploro instintivamente todas sus configuraciones y atajos complejos el primer día.' }
-      ]},
-      { level: 2, q: 'Tu computadora lanza una pantalla azul/negra con un código de error de sistema desconocido.', options: [
-        { value: 20, label: 'Entro en pánico absoluto, me rindo llorando y compro otra computadora si puedo.' },
-        { value: 40, label: 'Llamo urgente a un técnico y le pago lo que pida para no tocar nada yo.' },
-        { value: 60, label: 'La reinicio mil veces rogando al cielo que vuelva a prender sola por milagro.' },
-        { value: 80, label: 'Busco la solución general en internet y sigo pasos fáciles para arreglarla.' },
-        { value: 100, label: 'Identifico el código de error en foros técnicos y lo soluciono mediante comandos o BIOS.' }
-      ]},
-      { level: 2, q: 'Alguien te pide que le ayudes a configurar la red Wi-Fi y los protocolos de seguridad de su router.', options: [
-        { value: 20, label: 'Salgo corriendo, creo que la palabra "router" tiene que ver con carpintería.' },
-        { value: 40, label: 'Digo "yo no sé de hackers" y me niego a acercarme al módem.' },
-        { value: 60, label: 'Logro entrar a la configuración básica, le pongo la contraseña y no toco nada más.' },
-        { value: 80, label: 'Le cambio el nombre, la contraseña y oculto la red para que nadie más entre.' },
-        { value: 100, label: 'Entro a la IP, configuro servidores DNS, optimizo canales y elevo la encriptación.' }
-      ]},
-      { level: 3, q: 'Te proponen un diplomado para aprender a escribir código puro en lenguajes como Python, Java o C++.', options: [
-        { value: 20, label: 'Me parece un lenguaje alienígena horroroso, prefiero torturarme antes que programar.' },
-        { value: 40, label: 'Rechazo la oferta porque soy malísimo memorizando comandos e inglés técnico.' },
-        { value: 60, label: 'Asisto a un par de clases solo para hacer currículum, pero copio y pego todo el código.' },
-        { value: 80, label: 'Me esfuerzo y estudio duro porque sé que programar es el futuro laboral.' },
-        { value: 100, label: 'Acepto con la máxima emoción, mi cerebro entiende la lógica algorítmica de forma natural.' }
-      ]},
-      { level: 3, q: 'Te encargan diseñar y mantener activa una arquitectura de servidores y base de datos masiva.', options: [
-        { value: 20, label: 'Renuncio de inmediato, me daría terror borrar o destruir los datos del sistema.' },
-        { value: 40, label: 'Rechazo el cargo, el estrés de que "se caiga el sistema" no es para mí.' },
-        { value: 60, label: 'Hago una hoja de Excel gigante guardada en la nube y cruzo los dedos para que aguante.' },
-        { value: 80, label: 'Leo la documentación, contrato un servicio en la nube y organizo la estructura con cuidado.' },
-        { value: 100, label: 'Me fascina la idea de programar, estructurar y orquestar bases de datos de alto rendimiento.' }
-      ]},
-      { level: 3, q: '¿Te ves pasando tu vida laboral entera frente a tres monitores escribiendo líneas de código oscuro?', options: [
-        { value: 20, label: 'Me volvería loco de depresión por el encierro; necesito estar en la calle y hablar con humanos.' },
-        { value: 40, label: 'Odiaría estar sentado todo el día frente a luces azules, mi cuerpo no lo soportaría.' },
-        { value: 60, label: 'Podría soportarlo mecánicamente solo si el sueldo me permite retirarme joven.' },
-        { value: 80, label: 'Me parece un estilo de vida súper interesante, productivo y acorde a mi perfil.' },
-        { value: 100, label: 'Sería el trabajo de mis sueños, entro en un estado de trance y pura felicidad codificando.' }
-      ]}
+      {
+        level: 1,
+        q: 'En tu entorno de estudio o trabajo te solicitan implementar una nueva plataforma digital compleja, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Prefiero seguir utilizando métodos tradicionales de registro impreso o manuales sencillos.' },
+          { value: 40, label: 'Solicito ayuda a un compañero para que realice la instalación inicial y me enseñe a usar lo básico.' },
+          { value: 60, label: 'Aprendo a utilizar únicamente las funciones necesarias para cumplir con mis deberes.' },
+          { value: 80, label: 'Investigo de manera independiente la guía de usuario y aprendo a operarla con facilidad.' },
+          { value: 100, label: 'Exploro a fondo todas las opciones avanzadas, configuraciones y atajos del sistema para optimizar su uso.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Tu computadora o dispositivo muestra un error en la pantalla y no inicia el sistema operativo correctamente, ¿qué haces normalmente?',
+        options: [
+          { value: 20, label: 'Prefiero solicitar apoyo inmediato a soporte técnico sin intentar interactuar con el error.' },
+          { value: 40, label: 'Apago y enciendo el equipo con la esperanza de que vuelva a la normalidad de forma automática.' },
+          { value: 60, label: 'Reviso que las conexiones estén bien e intento algunas soluciones simples que conozco.' },
+          { value: 80, label: 'Busco el mensaje de error en internet y sigo paso a paso la solución recomendada para corregirlo.' },
+          { value: 100, label: 'Analizo el código de error y ejecuto la solución técnica adecuada modificando archivos del sistema o BIOS.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Te piden que configures los parámetros de seguridad de una red de internet y el router de tu hogar u oficina, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Prefiero no hacerlo, ya que desconozco el funcionamiento básico de redes y conectividad.' },
+          { value: 40, label: 'Sigo las instrucciones impresas básicas y configuro solo el nombre de red y la clave estándar.' },
+          { value: 60, label: 'Logro acceder a los ajustes principales de administración y verifico la configuración inicial.' },
+          { value: 80, label: 'Configuro la red y modifico los ajustes de seguridad y privacidad para proteger los accesos.' },
+          { value: 100, label: 'Entro al panel de administración avanzado para optimizar los canales, DNS, IP estáticas y protocolos de encriptación.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te ofrecen la oportunidad de participar en un curso de programación en lenguajes como Python, Java o C++, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'No me interesa aprender programación, considero que es un área lejana a mi perfil y preferencias.' },
+          { value: 40, label: 'Asistiría si fuera un requisito, pero considero que me costaría comprender la lógica del código.' },
+          { value: 60, label: 'Participaría para adquirir nociones básicas del funcionamiento del software.' },
+          { value: 80, label: 'Estudiaría con entusiasmo porque reconozco el valor y la utilidad práctica del desarrollo de software.' },
+          { value: 100, label: 'Aceptaría emocionado porque disfruto de la lógica de programación y el diseño de algoritmos complejos.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te asignan la tarea de diseñar la estructura técnica y de almacenamiento de una base de datos importante, ¿cómo actuarías?',
+        options: [
+          { value: 20, label: 'Solicitaría que reasignen la tarea, ya que no me siento cómodo manejando estructuras de datos complejas.' },
+          { value: 40, label: 'Intentaría estructurarla de forma muy sencilla con las herramientas de oficina más familiares.' },
+          { value: 60, label: 'Desarrollaría un modelo básico aplicando las normas de almacenamiento indispensables.' },
+          { value: 80, label: 'Analizaría los requerimientos técnicos del proyecto para diseñar un sistema seguro y organizado.' },
+          { value: 100, label: 'Diseñaría una arquitectura optimizada para grandes volúmenes de información, garantizando eficiencia y escalabilidad.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si en el futuro te ves trabajando de forma constante frente a computadoras escribiendo código y desarrollando sistemas, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'Preferiría un trabajo con mayor interacción social directa o que involucre actividades de campo.' },
+          { value: 40, label: 'Considero que la jornada sedentaria y la concentración prolongada frente a la pantalla me desgastarían mucho.' },
+          { value: 60, label: 'Podría desempeñarlo si el proyecto es interesante, aunque buscaría intercalarlo con otras actividades.' },
+          { value: 80, label: 'Me parece una profesión dinámica y con excelente proyección laboral a la cual me adaptaría con facilidad.' },
+          { value: 100, label: 'Sería ideal para mí, disfruto del desarrollo continuo de soluciones de software y la resolución técnica de problemas.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_autonomia',
     title: 'Aprendizaje Autónomo',
     questions: [
-      { level: 1, q: 'Un profesor o jefe menciona un concepto técnico fascinante pero no lo explica en absoluto.', options: [
-        { value: 20, label: 'Me quejo de que es un mal profesor por no explicarlo, y me niego a buscarlo yo.' },
-        { value: 40, label: 'Me olvido del asunto y de la palabra exactamente 5 segundos después de la clase.' },
-        { value: 60, label: 'Espero que un compañero más listo lo busque y me lo resuma luego en el receso.' },
-        { value: 80, label: 'Anoto la palabra clave en mi cuaderno para buscarla cuando llegue a mi casa.' },
-        { value: 100, label: 'Saco mi celular debajo de la mesa y lo busco instantáneamente en Google o Wikipedia.' }
-      ]},
-      { level: 2, q: 'Debes dominar un tema extremadamente difícil y no tienes a quién pedirle clases particulares.', options: [
-        { value: 20, label: 'Me frustro, lloro, acepto mi trágico destino y me presento al examen a reprobar.' },
-        { value: 40, label: 'Me leo un resumen de una página y confío ciega e ingenuamente en mi suerte.' },
-        { value: 60, label: 'Leo mis apuntes un par de veces la noche anterior rogando que venga algo fácil.' },
-        { value: 80, label: 'Busco varios tutoriales en YouTube y los veo hasta entender el panorama general.' },
-        { value: 100, label: 'Me encierro en mi habitación, busco libros, foros y no duermo hasta dominarlo por mi cuenta.' }
-      ]},
-      { level: 2, q: 'Descubres una plataforma internacional de cursos universitarios gratuitos (Coursera, edX).', options: [
-        { value: 20, label: 'Huyo de la página web; qué idea tan espantosa es estudiar en mi tiempo libre.' },
-        { value: 40, label: 'Abro la página, me da pereza leer en inglés y la cierro para siempre.' },
-        { value: 60, label: 'Me registro, veo motivado el primer video de un curso y luego lo abandono para siempre.' },
-        { value: 80, label: 'Me inscribo en un curso que necesito para mi carrera y lo avanzo lentamente los domingos.' },
-        { value: 100, label: 'Me convierto en adicto al sitio, terminando certificados rigurosos por puro interés intelectual.' }
-      ]},
-      { level: 3, q: 'Necesitas extraer datos de un artículo científico (paper) de 40 páginas, sin resúmenes.', options: [
-        { value: 20, label: 'Digo tajantemente "no entiendo esas letras" y exijo que me cambien la tarea.' },
-        { value: 40, label: 'Uso inteligencia artificial para que me genere un párrafo corto y no leo el documento real.' },
-        { value: 60, label: 'Leo solo la introducción y las conclusiones finales saltándome el marco metodológico.' },
-        { value: 80, label: 'Uso resaltador y lo leo pacientemente, deteniéndome para buscar términos desconocidos.' },
-        { value: 100, label: 'Lo leo metódica y analíticamente, diseccionando cada hipótesis y fórmula matemática expuesta.' }
-      ]},
-      { level: 3, q: 'Te dan un mes libre en el trabajo y te dicen: "Elige qué investigar, nadie te supervisará".', options: [
-        { value: 20, label: 'Me paso el mes entero viendo series, durmiendo y engañando a mis jefes.' },
-        { value: 40, label: 'Entro en crisis existencial porque no sé qué hacer si alguien no me da órdenes estrictas.' },
-        { value: 60, label: 'Hago el mínimo esfuerzo posible la última semana del mes para entregar "algo".' },
-        { value: 80, label: 'Armo un horario de oficina para mí mismo e investigo un tema que beneficia a la empresa.' },
-        { value: 100, label: 'Aprovecho frenéticamente esa libertad para investigar a profundidad mi mayor pasión académica.' }
-      ]},
-      { level: 3, q: '¿Te ves dedicando tu vida laboral al 100% a la investigación académica publicando libros y papers?', options: [
-        { value: 20, label: 'Esa vida aislada entre libros viejos me deprimiría, me parece una existencia miserable.' },
-        { value: 40, label: 'No lo soportaría, yo necesito un jefe y un equipo que me digan exactamente qué hacer hoy.' },
-        { value: 60, label: 'Prefiero el trabajo dinámico y social corporativo, pero podría publicar un artículo al año.' },
-        { value: 80, label: 'Me encantaría el prestigio del ambiente universitario y tener la disciplina para publicar.' },
-        { value: 100, label: 'Me apasiona intensamente la idea de ser un científico solitario o investigador académico puro.' }
-      ]}
+      {
+        level: 1,
+        q: 'Un docente o expositor menciona un concepto técnico relevante pero no profundiza en su explicación, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'No presto atención al término, asumiendo que si no se explicó no es de gran importancia.' },
+          { value: 40, label: 'Lo escucho, pero prefiero no tomar notas ni buscar información adicional sobre él.' },
+          { value: 60, label: 'Espero a que el tema se retome en la siguiente sesión para comprenderlo mejor.' },
+          { value: 80, label: 'Anoto la palabra clave para buscar una definición simple en internet al finalizar la clase.' },
+          { value: 100, label: 'Busco de inmediato la definición y ejemplos en internet para entender el concepto en el momento.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Debes estudiar un tema muy complejo por tu cuenta y no tienes la opción de recurrir a asesoría externa, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Prefiero no avanzar y esperar a que la evaluación pase de largo o a que cambien la tarea.' },
+          { value: 40, label: 'Intento leer la primera página de un manual básico esperando que la evaluación no sea muy difícil.' },
+          { value: 60, label: 'Repaso mis notas generales un día antes de la entrega o examen para recordar lo elemental.' },
+          { value: 80, label: 'Busco explicaciones, videos introductorios y guías en internet para comprender los fundamentos del tema.' },
+          { value: 100, label: 'Consulto múltiples libros y artículos de referencia para resolver todas mis dudas de manera profunda.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Descubres una plataforma internacional que ofrece cursos virtuales gratuitos y especializados, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'Prefiero no inscribirme, ya que no tengo interés en estudiar fuera del horario obligatorio.' },
+          { value: 40, label: 'Reviso la lista de cursos disponibles pero considero que estudiar en mi tiempo libre requiere demasiado esfuerzo.' },
+          { value: 60, label: 'Me inscribo en un curso motivado por el tema, aunque me resulta difícil mantener el ritmo para finalizarlo.' },
+          { value: 80, label: 'Selecciono un curso alineado con mis estudios actuales y me organizo para avanzar periódicamente.' },
+          { value: 100, label: 'Me entusiasma cursar programas de estudio avanzados para expandir mis conocimientos de manera continua.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Necesitas extraer información detallada de un informe científico o manual extenso de muchas páginas, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Prefiero no leerlo e intentar conseguir una síntesis muy breve elaborada por otra persona.' },
+          { value: 40, label: 'Utilizo una herramienta automática para generar un resumen breve y leo solo ese texto.' },
+          { value: 60, label: 'Leo únicamente las partes introductorias y los resultados finales para ahorrar tiempo.' },
+          { value: 80, label: 'Dedico tiempo a leer el documento completo de forma paulatina, anotando las ideas más importantes.' },
+          { value: 100, label: 'Realizo un análisis exhaustivo y metódico del texto, evaluando la metodología de estudio y sus conclusiones.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'En tu ámbito laboral o académico te otorgan libertad para definir y desarrollar un tema de investigación propio, ¿cómo procedes?',
+        options: [
+          { value: 20, label: 'Me cuesta definir un tema sin directrices específicas y prefiero realizar el mínimo esfuerzo.' },
+          { value: 40, label: 'Elijo el tema más sencillo posible solo para cumplir con la presentación reglamentaria.' },
+          { value: 60, label: 'Defino una propuesta estándar basada en plantillas previas para asegurar la aprobación.' },
+          { value: 80, label: 'Planifico mi cronograma de trabajo e investigo un tema relevante y de utilidad práctica para el área.' },
+          { value: 100, label: 'Aprovecho la oportunidad para investigar rigurosamente un tema complejo que me apasiona a nivel profesional.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si imaginas tu futuro profesional dedicado a la investigación académica continua o la escritura científica, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'Prefiero evitarlo, ya que me parece una labor solitaria y alejada del dinamismo práctico.' },
+          { value: 40, label: 'No me resulta muy atractivo, preferiría un rol operativo clásico con instrucciones predefinidas.' },
+          { value: 60, label: 'Podría redactar reportes de forma ocasional, pero no enfocaría mi carrera exclusivamente en la investigación.' },
+          { value: 80, label: 'Considero que la generación de conocimiento científico es fundamental y me gustaría formar parte de proyectos académicos.' },
+          { value: 100, label: 'Me apasiona la idea de ser un investigador especializado y contribuir activamente al avance científico de mi disciplina.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_resolucion_problemas',
     title: 'Resolución de Problemas Complejos',
     questions: [
-      { level: 1, q: 'Te regalan un rompecabezas mecánico de 1000 piezas o un cubo Rubik totalmente desarmado.', options: [
-        { value: 20, label: 'Me enojo por el regalo inútil y lo escondo en un cajón para no verlo nunca más.' },
-        { value: 40, label: 'Muevo un par de piezas al azar sin entender nada y lo dejo tirado en la mesa.' },
-        { value: 60, label: 'Juego concentrado unos 15 minutos, y al ver que no sale, busco la solución en YouTube.' },
-        { value: 80, label: 'Dedico tiempo cada tarde intentando descifrar cómo encajar las piezas poco a poco.' },
-        { value: 100, label: 'No duermo, no como y no respiro hasta analizar el patrón matemático para resolverlo yo solo.' }
-      ]},
-      { level: 2, q: 'Un proyecto logístico o maqueta de arquitectura colapsa inesperadamente a 2 horas de la entrega.', options: [
-        { value: 20, label: 'Entro en crisis total de pánico, lloro a gritos, pateo las cosas y me voy del lugar.' },
-        { value: 40, label: 'Me paralizo del shock, me siento en una silla y espero que otra persona lo solucione.' },
-        { value: 60, label: 'Agarro cinta y pegamento intentando unir las partes al azar esperando un milagro estético.' },
-        { value: 80, label: 'Pido calma a mi equipo, evaluamos los daños rápidamente y rearmamos lo esencial.' },
-        { value: 100, label: 'Aíslo fríamente el punto de falla estructural, diseño una solución de carga y lo reconstruyo mejorado.' }
-      ]},
-      { level: 2, q: 'La lavadora o un electrodoméstico mecánico de tu casa hace un ruido extraño y deja de funcionar.', options: [
-        { value: 20, label: 'Lo declaro muerto, exijo que compren uno nuevo inmediatamente sin revisarlo.' },
-        { value: 40, label: 'Le doy un par de golpes fuertes y lo sacudo a ver si por magia vuelve a prender.' },
-        { value: 60, label: 'Llamo directamente al técnico y le pago lo que sea para no ensuciarme las manos.' },
-        { value: 80, label: 'Busco tutoriales en internet, verifico filtros y cables antes de pedir ayuda experta.' },
-        { value: 100, label: 'Busco mis herramientas, lo desarmo metódicamente hasta encontrar el engranaje o circuito fallado.' }
-      ]},
-      { level: 3, q: 'Te contratan de emergencia para evitar que una gran fábrica siga perdiendo millones por cuellos de botella.', options: [
-        { value: 20, label: 'Renuncio inmediatamente; jamás aceptaría una responsabilidad de vida o muerte corporativa.' },
-        { value: 40, label: 'Me aterro, culpo a los obreros por flojos y despido al azar para fingir que hago algo.' },
-        { value: 60, label: 'Aplico soluciones estándar que leí en un manual genérico y cruzo los dedos para que funcionen.' },
-        { value: 80, label: 'Me reúno con los gerentes de planta para escuchar los problemas y aplicar control de calidad.' },
-        { value: 100, label: 'Mapeo todo el flujo logístico usando matemáticas y control estadístico de procesos para aislar el fallo.' }
-      ]},
-      { level: 3, q: 'Te presentan un problema corporativo con múltiples variables, riesgos cruzados y altísima incertidumbre.', options: [
-        { value: 20, label: 'Mi cerebro se apaga ante la abrumadora complejidad, dejo el trabajo botado en la mesa.' },
-        { value: 40, label: 'Busco la solución más superficial y mediocre posible solo para sacarme el peso de encima.' },
-        { value: 60, label: 'Tomo la decisión más segura y tradicional, copiando exactamente lo que hizo otra empresa.' },
-        { value: 80, label: 'Dibujo mapas conceptuales, analizo pros y contras y trazo un plan estratégico meditado.' },
-        { value: 100, label: 'Me apasiona diseccionar el caos: desmenuzo las variables ocultas y creo un algoritmo de solución.' }
-      ]},
-      { level: 3, q: '¿Te gustaría ser el experto ingeniero u optimizador al que todos llaman cuando hay una crisis catastrófica?', options: [
-        { value: 20, label: 'Absolutamente no, huyo despavorido de esa tremenda presión y estrés infartante.' },
-        { value: 40, label: 'Odio las emergencias, yo preferiría un trabajo donde todo sea predecible y monótono.' },
-        { value: 60, label: 'Podría hacerlo un par de años por prestigio y dinero, pero luego buscaría la paz.' },
-        { value: 80, label: 'Me gustaría el respeto que conlleva ese cargo y me prepararía para no fallar bajo presión.' },
-        { value: 100, label: 'Es mi droga; amo la adrenalina intelectual de resolver analíticamente lo que todos creen imposible.' }
-      ]}
+      {
+        level: 1,
+        q: 'Te regalan un rompecabezas tridimensional complejo de muchas piezas o un cubo Rubik totalmente desordenado, ¿qué haces normalmente?',
+        options: [
+          { value: 20, label: 'Prefiero no intentar armarlo, ya que los acertijos mecánicos me cansan rápidamente.' },
+          { value: 40, label: 'Intento mover algunas partes de forma intuitiva, pero lo dejo si no avanzo pronto.' },
+          { value: 60, label: 'Lo juego por un momento corto y busco guías sencillas para comprender la solución básica.' },
+          { value: 80, label: 'Dedico ratos libres para intentar descifrar el patrón y avanzar en el armado de forma lógica.' },
+          { value: 100, label: 'Me concentro en comprender el mecanismo y disfruto de descifrar las reglas por mi propia cuenta.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Un proyecto importante en el que has trabajado colapsa de forma imprevista pocas horas antes de la entrega, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Siento un gran estrés y prefiero alejarme de la situación para calmarme antes de actuar.' },
+          { value: 40, label: 'Espero a que las directrices de mis superiores o compañeros me indiquen qué pasos seguir.' },
+          { value: 60, label: 'Trato de unir las partes dañadas rápidamente de manera superficial para salvar la entrega.' },
+          { value: 80, label: 'Mantengo la tranquilidad, analizo los daños y coordino con el equipo para reconstruir lo necesario.' },
+          { value: 100, label: 'Evalúo la falla de origen, implemento un ajuste y reestructuro el diseño para entregarlo en óptimas condiciones.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Un electrodoméstico o dispositivo del hogar presenta una falla técnica inesperada, ¿cómo procedes?',
+        options: [
+          { value: 20, label: 'Decido reemplazar el equipo o contratar ayuda externa sin intentar verificar el problema.' },
+          { value: 40, label: 'Intento reiniciar el dispositivo o darle ligeros toques para ver si vuelve a funcionar por sí solo.' },
+          { value: 60, label: 'Solicito apoyo técnico, pero antes trato de inspeccionar que los cables estén conectados correctamente.' },
+          { value: 80, label: 'Busco guías de soporte en internet para verificar si es una falla simple que pueda reparar yo mismo.' },
+          { value: 100, label: 'Consigo herramientas para abrir el equipo, diagnosticar la falla física y realizar el reemplazo de la pieza afectada.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te contratan para resolver problemas de baja productividad o cuellos de botella en una línea de producción importante, ¿cómo actuarías?',
+        options: [
+          { value: 20, label: 'Rechazaría el rol, pues no me agrada asumir la presión de solucionar problemas organizacionales graves.' },
+          { value: 40, label: 'Tomo la posición y espero las opiniones de los operarios para proponer soluciones generales de orden.' },
+          { value: 60, label: 'Aplico los procedimientos de resolución estándar descritos en las guías de administración convencionales.' },
+          { value: 80, label: 'Analizo los tiempos de entrega de cada estación para implementar mejoras y agilizar los procesos.' },
+          { value: 100, label: 'Realizo un mapeo completo de los flujos de trabajo usando métodos matemáticos para rediseñar el sistema de producción.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te presentan un problema estratégico con múltiples variables cruzadas, riesgos y mucha incertidumbre, ¿cómo procedes?',
+        options: [
+          { value: 20, label: 'Prefiero no liderar el análisis, ya que me confunden los escenarios de gran complejidad.' },
+          { value: 40, label: 'Intento aplicar la solución más sencilla posible para resolver el problema inmediato rápidamente.' },
+          { value: 60, label: 'Tomo una decisión segura basada en la experiencia de casos anteriores parecidos.' },
+          { value: 80, label: 'Elaboro esquemas para analizar pros y contras de cada camino, buscando mitigar los riesgos principales.' },
+          { value: 100, label: 'Desgloso todas las variables ocultas y desarrollo un modelo estratégico para resolver el problema de raíz.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si en el futuro trabajas como el consultor experto en resolución de crisis al que llaman cuando surge una situación crítica, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'Evitaría ese rol, prefiero trabajar en un entorno predecible y con menor exigencia bajo presión.' },
+          { value: 40, label: 'Me resultaría demasiado estresante y buscaría una labor con rutinas diarias más tranquilas.' },
+          { value: 60, label: 'Lo consideraría si se presenta la oportunidad y cuento con un buen equipo de apoyo técnico.' },
+          { value: 80, label: 'Me atrae el reconocimiento profesional y me prepararía metódicamente para actuar con eficacia en momentos difíciles.' },
+          { value: 100, label: 'Me entusiasma el desafío, ya que disfruto de la adrenalina intelectual de resolver problemas complejos bajo presión.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_pensamiento_critico',
     title: 'Pensamiento Crítico',
     questions: [
-      { level: 1, q: 'Ves una noticia o imagen sumamente indignante circulando velozmente por WhatsApp o TikTok.', options: [
-        { value: 20, label: 'Me dejo llevar por la rabia ciega y lo comparto de inmediato con todos mis contactos familiares.' },
-        { value: 40, label: 'Dudo un segundo de si la imagen es real, pero igual asumo que es verdad y la comento enojado.' },
-        { value: 60, label: 'No lo comparto por pereza, pero termino creyendo lo que dice porque "todos lo dicen".' },
-        { value: 80, label: 'Abro Google y busco si algún medio oficial desmintió la noticia antes de formarme una opinión.' },
-        { value: 100, label: 'Desconfío instintivamente: verifico fechas, leo las fuentes cruzadas y busco la metodología de la nota.' }
-      ]},
-      { level: 2, q: 'Un líder, influencer o político muy carismático da un discurso apasionado lleno de promesas increíbles.', options: [
-        { value: 20, label: 'Me emociono hasta las lágrimas, me vuelvo su fanático y defiendo todo lo que dice ciegamente.' },
-        { value: 40, label: 'Me cae bien porque habla bonito, así que asumo que sus promesas técnicas son viables.' },
-        { value: 60, label: 'Lo escucho como entretenimiento, pero no analizo mucho las implicaciones de lo que promete.' },
-        { value: 80, label: 'Escucho con atención intentando separar sus emociones de los datos reales que presenta.' },
-        { value: 100, label: 'Desmonto mentalmente sus falacias argumentales, sus sesgos y exijo evidencia empírica a sus datos.' }
-      ]},
-      { level: 2, q: 'Tu grupo de trabajo universitario aprueba una idea que tú sabes que es lógica y estadísticamente desastrosa.', options: [
-        { value: 20, label: 'Me callo la boca cobardemente y asiento con la cabeza para no ser excluido del grupo social.' },
-        { value: 40, label: 'Digo "ok, hagámoslo" sabiendo que va a fallar, solo para no generar una discusión tensa.' },
-        { value: 60, label: 'Les menciono muy débilmente que "podría salir mal", pero dejo que ellos asuman el choque.' },
-        { value: 80, label: 'Me pongo firme, les explico los riesgos e intento convencerlos amablemente de cambiar de rumbo.' },
-        { value: 100, label: 'Juego al "abogado del diablo" con datos fríos y contundentes hasta destruir lógicamente su propuesta.' }
-      ]},
-      { level: 3, q: 'Te encargan la pesada tarea de auditar un contrato legal o los estándares de calidad de una fábrica.', options: [
-        { value: 20, label: 'Fírmo o apruebo rápido sin leer la letra pequeña, yo confío plenamente en la bondad de la gente.' },
-        { value: 40, label: 'Me da demasiada pereza leer las 100 páginas, así que leo solo el título y la última hoja.' },
-        { value: 60, label: 'Reviso por encima que los márgenes, títulos y firmas parezcan legales para cumplir mi turno.' },
-        { value: 80, label: 'Leo con atención todo el documento resaltando las partes que me parecen ambiguas o dudosas.' },
-        { value: 100, label: 'Analizo minuciosamente y con aguda sospecha cada coma y cláusula buscando lagunas legales y fraudes.' }
-      ]},
-      { level: 3, q: 'Debes tomar la decisión de despedir a muchos obreros basándote en un sistema de rendimiento puro.', options: [
-        { value: 20, label: 'Me pongo a llorar de lástima, me paralizo por la presión y renuncio para no hacerlo yo.' },
-        { value: 40, label: 'Me dejo llevar por la presión del sindicato y no despido a nadie para que no me odien.' },
-        { value: 60, label: 'Trato de tomar una ruta intermedia mediocre para complacer a los gerentes y a los obreros.' },
-        { value: 80, label: 'Hablo con los afectados intentando ser justo, pero ejecuto los recortes necesarios para la empresa.' },
-        { value: 100, label: 'Tomo la decisión dura, objetiva y gélida que dictan irrevocablemente los datos estadísticos de eficiencia.' }
-      ]},
-      { level: 3, q: '¿Sientes un inmenso placer al destruir paradigmas tradicionales demostrando estadísticamente que están mal?', options: [
-        { value: 20, label: 'No, yo prefiero someterme y respetar incondicionalmente las tradiciones, mitos y jerarquías impuestas.' },
-        { value: 40, label: 'No me gusta pelear; evito a toda costa los conflictos ideológicos con mis mayores o jefes.' },
-        { value: 60, label: 'A veces encuentro que la tradición falla, pero me guardo la información para no ser antipático.' },
-        { value: 80, label: 'Me gusta investigar la verdad e intento persuadir educadamente a otros con mis hallazgos empíricos.' },
-        { value: 100, label: 'Siento un éxtasis intelectual absoluto al usar la ciencia y la lógica para aniquilar dogmas irracionales.' }
-      ]}
+      {
+        level: 1,
+        q: 'Encuentras una noticia impactante compartida repetidamente en tus redes sociales, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Comparto la información de inmediato con mis conocidos para alertarlos.' },
+          { value: 40, label: 'Reacciono a la publicación asumiendo que los datos son reales sin mayor verificación.' },
+          { value: 60, label: 'Leo la publicación y la comento de manera informal con otras personas.' },
+          { value: 80, label: 'Busco el tema en fuentes periodísticas confiables para confirmar la autenticidad de la noticia.' },
+          { value: 100, label: 'Evalúo críticamente las fuentes de origen, la fecha de publicación y las intenciones del artículo antes de tomar una postura.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Un orador o líder muy carismático expone planes sumamente atractivos pero con pocos detalles de viabilidad técnica, ¿qué postura adoptas?',
+        options: [
+          { value: 20, label: 'Me convence su discurso por su confianza y me muestro de acuerdo con sus planteamientos.' },
+          { value: 40, label: 'Apoyo sus ideas de forma general porque me resulta agradable su presentación.' },
+          { value: 60, label: 'Escucho el discurso pero no me detengo a evaluar si los planes son realmente realizables.' },
+          { value: 80, label: 'Presto atención al contenido buscando separar la elocuencia de las propuestas prácticas reales.' },
+          { value: 100, label: 'Analizo los datos aportados, identifico las falacias argumentativas y exijo bases objetivas a sus promesas.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Tu grupo de trabajo aprueba una propuesta de proyecto que consideras que tiene errores de diseño importantes, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Acepto la propuesta grupal en silencio para no generar tensiones ni debates en el equipo.' },
+          { value: 40, label: 'Expreso que estoy de acuerdo aunque crea que fallará, priorizando mantener la armonía grupal.' },
+          { value: 60, label: 'Menciono de forma breve mi inquietud pero dejo que el grupo decida sin insistir en mi postura.' },
+          { value: 80, label: 'Explico mis dudas de forma ordenada e intento convencer al equipo de buscar opciones alternativas.' },
+          { value: 100, label: 'Expongo un análisis estructurado con argumentos firmes para demostrar por qué es necesario modificar la propuesta.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te asignan la responsabilidad de evaluar detalladamente un contrato o un informe de calidad en tu organización, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Apruebo el documento con una revisión muy rápida porque confío en el criterio del equipo redactor.' },
+          { value: 40, label: 'Leo solamente los resúmenes iniciales y la conclusión general para validar el documento.' },
+          { value: 60, label: 'Realizo una revisión general de la estructura y formato formal para asegurar que cumpla los requisitos indispensables.' },
+          { value: 80, label: 'Leo a detalle el documento completo e identifico cláusulas o especificaciones que podrían ser ambiguas.' },
+          { value: 100, label: 'Analizo minuciosamente cada punto y condición buscando discrepancias o fallas técnicas antes de otorgar mi conformidad.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te corresponde reorganizar el personal de un departamento evaluando exclusivamente los datos de productividad laboral, ¿cómo procedes?',
+        options: [
+          { value: 20, label: 'Me resulta muy difícil tomar decisiones sobre el empleo de las personas y prefiero delegar esta responsabilidad.' },
+          { value: 40, label: 'Evito aplicar cambios drásticos para no generar inconformidades o críticas en el entorno laboral.' },
+          { value: 60, label: 'Busco soluciones intermedias y parciales para mitigar el descontento de todas las partes involucradas.' },
+          { value: 80, label: 'Tomo las decisiones necesarias de forma respetuosa con los trabajadores para asegurar el bienestar del proyecto.' },
+          { value: 100, label: 'Aplico rigurosamente las pautas de rendimiento y tomo las decisiones basándome estrictamente en el análisis de los indicadores.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si en tu futuro profesional debes retar paradigmas organizacionales o metodologías tradicionales que consideres ineficientes, ¿qué harías?',
+        options: [
+          { value: 20, label: 'Prefiero apegarme a los reglamentos y dinámicas tradicionales de la organización para no crear controversia.' },
+          { value: 40, label: 'Evito cuestionar el orden establecido para evitar discusiones con superiores o colegas con mayor trayectoria.' },
+          { value: 60, label: 'Expresaría alguna mejora solo si me lo solicitan directamente en una reunión de planificación.' },
+          { value: 80, label: 'Formulo una propuesta de cambio y la presento de manera formal y amable demostrando sus beneficios prácticos.' },
+          { value: 100, label: 'Disfruto de estructurar argumentos fundamentados y debatir activamente las metodologías ineficientes con datos sólidos.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_percepcion_social',
     title: 'Inteligencia Emocional',
     questions: [
-      { level: 1, q: 'Estás en una reunión festiva y alguien en una esquina se aísla repentinamente viéndose muy triste y apagado.', options: [
-        { value: 20, label: 'Ni me doy cuenta del entorno, estoy enfocado 100% en mi propia diversión o mi celular.' },
-        { value: 40, label: 'Lo noto de reojo, me da curiosidad pero sigo en lo mío esperando que alguien más se acerque.' },
-        { value: 60, label: 'Le grito desde lejos "¿Todo bien?" y si me responde que "sí", me doy la vuelta tranquilo.' },
-        { value: 80, label: 'Me acerco y le ofrezco un vaso de agua o lo invito a unirse al grupo para que no esté solo.' },
-        { value: 100, label: 'Leo su lenguaje no verbal, me acerco sutilmente y lo acompaño empáticamente adaptándome a su ritmo.' }
-      ]},
-      { level: 2, q: 'Un usuario, paciente o cliente profundamente frustrado comienza a gritarte e insultarte por un error administrativo.', options: [
-        { value: 20, label: 'Me ofendo, le grito de vuelta con furia descontrolada o llamo a seguridad para que lo saquen a golpes.' },
-        { value: 40, label: 'Me pongo a llorar de impotencia o salgo corriendo a esconderme en el baño por la ansiedad.' },
-        { value: 60, label: 'Le hablo como un robot, de manera fría, seca y cortante, ignorando totalmente su tormenta emocional.' },
-        { value: 80, label: 'Mantengo la calma, respiro profundo y trato de darle una solución técnica rápida para que se vaya.' },
-        { value: 100, label: 'Uso altísima empatía clínica, modulación asertiva de voz y psicología táctica para desescalar su ira.' }
-      ]},
-      { level: 2, q: 'Un amigo o familiar te confía un problema íntimo muy doloroso y comienza a llorar desconsoladamente frente a ti.', options: [
-        { value: 20, label: 'Me pongo sumamente asqueado o incómodo ante el llanto, me bloqueo y me voy del lugar.' },
-        { value: 40, label: 'Me pongo nervioso e intento hacer chistes o cambiar de tema agresivamente para frenar sus lágrimas.' },
-        { value: 60, label: 'Le doy palmaditas en la espalda y le digo frases cliché ("todo estará bien") para que acabe pronto.' },
-        { value: 80, label: 'Trato de darle soluciones lógicas inmediatas y consejos directos sobre qué debe hacer mañana.' },
-        { value: 100, label: 'Lo contengo, lo escucho activamente sin juzgar, validando absolutamente su desborde emocional.' }
-      ]},
-      { level: 3, q: 'Te proponen estudiar a profundidad la complejidad química y los traumas detrás de los trastornos mentales severos.', options: [
-        { value: 20, label: 'Me parece un tema muy perturbador, morboso y repulsivo; prefiero estudiar cosas "normales".' },
-        { value: 40, label: 'Me da miedo que analizar la locura humana termine afectándome la mente a mí también.' },
-        { value: 60, label: 'Lo estudiaría solo por curiosidad teórica superficial o cultura general, pero sin aplicar nada.' },
-        { value: 80, label: 'Me interesa mucho la psicología y creo que podría usar ese conocimiento para mejorar mis relaciones.' },
-        { value: 100, label: 'Me apasiona intensamente la idea de entender, diagnosticar y ayudar a sanar la psique humana enferma.' }
-      ]},
-      { level: 3, q: 'En tu trabajo médico o clínico debes comunicar noticias de muertes y desahucios a familiares todos los días.', options: [
-        { value: 20, label: 'Renunciaría en el minuto 1; no soportaría ni un solo día esa desgarradora carga emocional.' },
-        { value: 40, label: 'Trataría de hacerlo pero terminaría con una severa depresión crónica o ataque de pánico en meses.' },
-        { value: 60, label: 'Lo haría delegando a enfermeras o leyendo un papel de forma desapegada para proteger mi salud.' },
-        { value: 80, label: 'Afrontaría el dolor y trataría de ser lo más amable posible, aunque llegaría muy cansado a casa.' },
-        { value: 100, label: 'Tendría la resistente coraza emocional y la altísima empatía clínica necesaria para hacerlo profesionalmente.' }
-      ]},
-      { level: 3, q: '¿Disfrutarías dedicando tu vida laboral diaria a rehabilitar en el fango a adictos, indigentes o presidiarios?', options: [
-        { value: 20, label: 'Siento un profundo desprecio, asco o miedo irracional por esos ambientes oscuros e higiénicamente feos.' },
-        { value: 40, label: 'Yo creo que "cada quien tiene lo que merece", jamás perdería mi tiempo intentando salvar a esa gente.' },
-        { value: 60, label: 'Solo lo haría temporalmente si fuera mi única y desesperada opción de supervivencia económica.' },
-        { value: 80, label: 'Me parece un trabajo admirable y heroico, estaría dispuesto a colaborar en una ONG si me capacitan.' },
-        { value: 100, label: 'Siento la inmensa, pura y genuina vocación inquebrantable de rescatar vidas marginadas por la sociedad.' }
-      ]}
+      {
+        level: 1,
+        q: 'En una reunión social, notas que un integrante del grupo se aísla de pronto con gesto triste y decaído, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'No me percato de su situación ya que estoy concentrado en mis propios asuntos y entretenimiento.' },
+          { value: 40, label: 'Lo noto de reojo, me da curiosidad pero sigo en lo mío esperando que alguien más se acerque.' },
+          { value: 60, label: 'Le pregunto de forma breve si se siente bien y continúo conversando con los demás.' },
+          { value: 80, label: 'Me acerco con amabilidad para ofrecerle algo de tomar y sugerirle integrarse de nuevo al grupo.' },
+          { value: 100, label: 'Me acerco discretamente, escucho su estado de ánimo y lo acompaño respetando sus emociones.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Un usuario o cliente muy molesto te reclama con agresividad verbal debido a una mala gestión del servicio, ¿cómo respondes?',
+        options: [
+          { value: 20, label: 'Respondo con molestia y busco la intervención de un tercero para que lo retire del lugar.' },
+          { value: 40, label: 'Me genera mucha tensión y prefiero ausentarme momentáneamente para evitar la confrontación.' },
+          { value: 60, label: 'Le hablo con tono formal y seco para centrarme únicamente en la transacción operativa del servicio.' },
+          { value: 80, label: 'Mantengo la calma, escucho su queja con tranquilidad y le ofrezco una solución práctica viable.' },
+          { value: 100, label: 'Modulo asertivamente mi voz, muestro empatía ante su malestar y aplico técnicas de diálogo para desescalar el conflicto.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Un conocido o familiar cercano te confía un problema personal delicado y se quiebra emocionalmente frente a ti, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Me incomoda bastante la situación y busco un motivo rápido para retirarme o delegar el apoyo.' },
+          { value: 40, label: 'Intento cambiar de tema o desviar la atención para que no continúe expresando su aflicción.' },
+          { value: 60, label: 'Le doy palabras sencillas de aliento y le aconsejo que trate de calmarse pronto.' },
+          { value: 80, label: 'Le ofrezco consejos lógicos y sugerencias prácticas directas sobre cómo solucionar su problema.' },
+          { value: 100, label: 'Escucho activamente y con gran empatía, brindándole contención y validando sus sentimientos sin juzgar.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te proponen participar en un proyecto de estudio sobre la complejidad biológica y psicológica de los trastornos mentales severos, ¿cómo lo tomarías?',
+        options: [
+          { value: 20, label: 'Prefiero evitar el tema, ya que no me interesa el estudio de las patologías de la mente humana.' },
+          { value: 40, label: 'Lo consideraría si fuera indispensable, pero prefiero no profundizar en temáticas complejas de salud mental.' },
+          { value: 60, label: 'Estudiaría los conceptos generales del tema por cultura académica general.' },
+          { value: 80, label: 'Me interesa comprender cómo funcionan estos trastornos para tener mayor empatía ante el comportamiento humano.' },
+          { value: 100, label: 'Me apasiona el estudio profundo de la psiquiatría y la psicología clínica para comprender y ayudar a sanar a otros.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'En un entorno laboral del sector salud, debes informar de manera constante a familiares sobre diagnósticos médicos desfavorables, ¿cómo actuarías?',
+        options: [
+          { value: 20, label: 'Preferiría no asumir este rol, ya que considero que la carga emocional afectaría severamente mi bienestar.' },
+          { value: 40, label: 'Sería muy difícil para mí manejar estas conversaciones cotidianamente sin experimentar agotamiento emocional.' },
+          { value: 60, label: 'Lo haría apegándome estrictamente al protocolo formal para proteger mis propias emociones.' },
+          { value: 80, label: 'Afrontaría la situación mostrando empatía y cuidado en la forma de comunicar los diagnósticos.' },
+          { value: 100, label: 'Cuento con la preparación y resiliencia emocional necesarias para guiar a los familiares con profesionalismo y empatía.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si tuvieras la oportunidad de dedicar tu labor al acompañamiento y la reinserción social de personas en situaciones de alta vulnerabilidad, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'No me interesaría participar en esas áreas debido a los desafíos sociales y de seguridad que conllevan.' },
+          { value: 40, label: 'Considero que es una labor noble, pero prefiero desarrollarme en sectores más estables y estructurados.' },
+          { value: 60, label: 'Estaría dispuesto a colaborar en actividades específicas si tengo la capacitación e inducción requerida.' },
+          { value: 80, label: 'Me parece un servicio comunitario muy importante y me agradaría asumir funciones de apoyo y orientación.' },
+          { value: 100, label: 'Siento la inmensa, pura y genuina vocación inquebrantable de rescatar vidas marginadas por la sociedad.' }
+        ]
+      }
     ]
   },
   {
     id: 'transversal_toma_decisiones',
     title: 'Toma de Decisiones y Liderazgo',
     questions: [
-      { level: 1, q: 'Tu grupo de amigos lleva una hora discutiendo en la calle sin lograr ponerse de acuerdo sobre a qué lugar ir.', options: [
-        { value: 20, label: 'Me voy a mi casa, me estresa que me presionen para elegir o liderar al grupo.' },
-        { value: 40, label: 'Espero en silencio sepulcral durante otra hora más a que ellos sigan discutiendo hasta cansarse.' },
-        { value: 60, label: 'Digo "a mí me da exactamente igual" y sigo mirando mi teléfono totalmente desconectado del debate.' },
-        { value: 80, label: 'Propongo un par de ideas lógicas y les pregunto si quieren votar democráticamente para avanzar.' },
-        { value: 100, label: 'Tomo la iniciativa directiva, elijo el lugar óptimo e instruyo enérgicamente a todos para que caminen.' }
-      ]},
-      { level: 2, q: 'En el proyecto final, nadie sabe qué hacer, todo es un caos total y el tiempo de entrega límite se acaba.', options: [
-        { value: 20, label: 'Me paralizo de ansiedad, me rindo mentalmente, abandono el grupo y asumo el "cero" de calificación.' },
-        { value: 40, label: 'Culpo a los demás de ser unos inútiles y me quejo con el profesor pidiendo prórroga o clemencia.' },
-        { value: 60, label: 'Hago solo mi pequeña partecita en silencio absoluto y dejo que el resto del barco se hunda.' },
-        { value: 80, label: 'Pido calma, organizo una lluvia de ideas rápida y trato de que todos aportemos algo útil al proyecto.' },
-        { value: 100, label: 'Asumo el control dictatorial de la crisis, delego roles milimétricos, doy órdenes frías y exijo resultados.' }
-      ]},
-      { level: 2, q: 'Te proponen participar en una inversión comercial innovadora con un riesgo altísimo pero ganancias millonarias.', options: [
-        { value: 20, label: 'Huyo despavorido del riesgo sin pensarlo ni medio segundo; mi filosofía es el miedo al fracaso.' },
-        { value: 40, label: 'Prefiero poner mi dinero bajo el colchón o en el banco a ganar 1% anual pero 100% seguro.' },
-        { value: 60, label: 'Invierto solo lo poquito que me sobra a fin de mes por si acaso suena la flauta y me hago rico.' },
-        { value: 80, label: 'Estudio la viabilidad del negocio, hablo con expertos y si tiene sentido, asumo un riesgo moderado.' },
-        { value: 100, label: 'Calculo matemáticamente la desviación del riesgo, evalúo probabilidades de ruina e invierto agresivamente.' }
-      ]},
-      { level: 3, q: 'Te ofrecen el codiciado puesto de Gerente General (CEO) de una enorme transnacional que está al borde de la quiebra.', options: [
-        { value: 20, label: 'Lo rechazo tajantemente, asumir una empresa moribunda es un suicidio profesional que no toleraría.' },
-        { value: 40, label: 'El estrés de que cientos de empleados dependan de mí me daría ataques de pánico; no acepto.' },
-        { value: 60, label: 'Acepto el cargo únicamente para cobrar el enorme sueldo final, pero sabiendo que igual quebraremos.' },
-        { value: 80, label: 'Acepto con respeto el cargo e intento aplicar metodologías corporativas estándar para estabilizar la caída.' },
-        { value: 100, label: 'Acepto extasiado el reto titánico de tomar el timón en la peor tormenta, reestructurando todo el imperio.' }
-      ]},
-      { level: 3, q: 'Una orden directa tuya en la empresa resulta equivocada y provoca una dolorosa pérdida de millones de dólares.', options: [
-        { value: 20, label: 'Culpo desesperadamente a mis subordinados, a la economía o invento mentiras para salvar mi cuello.' },
-        { value: 40, label: 'Me escondo en mi oficina, evito las llamadas y ruego al cielo que la junta directiva no me audite.' },
-        { value: 60, label: 'Intento maquillar los números en el reporte trimestral para que el golpe parezca mucho menor de lo que es.' },
-        { value: 80, label: 'Pido disculpas sinceras a la gerencia, acepto mi error éticamente y trato de aprender de la lección.' },
-        { value: 100, label: 'Doy la cara gélidamente, asumo la responsabilidad penal/gerencial y ejecuto inmediatamente el plan de contingencia.' }
-      ]},
-      { level: 3, q: '¿Sientes pasión desbordante por la idea de ejercer el máximo poder político o corporativo sobre miles de personas?', options: [
-        { value: 20, label: 'Me aterra, me da náuseas y asco tener que ejercer dominación, poder y responsabilidad sobre otra gente.' },
-        { value: 40, label: 'Desprecio a los políticos y gerentes; prefiero una vida anónima trabajando en cosas pequeñas y artísticas.' },
-        { value: 60, label: 'Prefiero ser un mando medio tranquilo que obedece las órdenes de un superior sin cuestionar la macroestructura.' },
-        { value: 80, label: 'Me atrae el prestigio y la capacidad de hacer grandes cambios sociales desde una plataforma de liderazgo sólida.' },
-        { value: 100, label: 'Amo profundamente el peso del liderazgo estratégico global, el ajedrez del poder y tomar decisiones sistémicas.' }
-      ]}
+      {
+        level: 1,
+        q: 'Tu grupo de trabajo o amigos discute largamente sin ponerse de acuerdo sobre qué decisión tomar, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Prefiero mantenerme al margen y que los demás elijan lo que consideren conveniente.' },
+          { value: 40, label: 'Espero a que el debate termine sin intervenir directamente en la conversación.' },
+          { value: 60, label: 'Acepto cualquier decisión de la mayoría sin preocuparme demasiado por el rumbo final.' },
+          { value: 80, label: 'Propongo alternativas estructuradas y sugiero una votación democrática para resolverlo de forma ordenada.' },
+          { value: 100, label: 'Tomo la iniciativa de orientar el debate, defino la mejor opción y guío al grupo hacia esa dirección.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'En un proyecto final o de trabajo reina la desorganización, y la fecha límite de entrega está muy cerca, ¿cómo reaccionas?',
+        options: [
+          { value: 20, label: 'Prefiero distanciarme y asumir las consecuencias académicas o laborales en lugar de lidiar con el caos.' },
+          { value: 40, label: 'Reclamo a mis compañeros por la falta de orden y solicito una prórroga para la entrega.' },
+          { value: 60, label: 'Me concentro exclusivamente en desarrollar la parte asignada a mi persona para asegurar mi cumplimiento.' },
+          { value: 80, label: 'Pido orden al grupo, sugiero una reunión breve de planificación y busco que todos apoyen con sus tareas.' },
+          { value: 100, label: 'Asumo la dirección del proyecto, defino las tareas críticas pendientes, delego funciones y controlo los avances.' }
+        ]
+      },
+      {
+        level: 2,
+        q: 'Te proponen realizar una inversión en un negocio innovador con alto riesgo pero con proyecciones de excelente rentabilidad, ¿qué decides hacer?',
+        options: [
+          { value: 20, label: 'Rechazo la propuesta de inmediato, priorizando la seguridad y estabilidad total de mi presupuesto.' },
+          { value: 40, label: 'Prefiero destinar mis fondos a opciones financieras convencionales que no impliquen ningún riesgo.' },
+          { value: 60, label: 'Invierto solo una cantidad mínima que no afecte mi economía si el proyecto llega a fallar.' },
+          { value: 80, label: 'Analizo la viabilidad de la propuesta técnica y, si el mercado lo respalda, asumo el riesgo con un plan de respaldo.' },
+          { value: 100, label: 'Evalúo matemáticamente el nivel de riesgo, desarrollo proyecciones financieras complejas e invierto de manera decidida.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Te proponen asumir la gerencia general de una organización en crisis financiera con el reto de restructurarla, ¿aceptarías el reto?',
+        options: [
+          { value: 20, label: 'Rechazo el cargo, no considero viable asumir un puesto de alta responsabilidad en un entorno de inestabilidad.' },
+          { value: 40, label: 'Prefiero no aceptar porque la presión y la responsabilidad sobre el empleo de otros me generarían mucha tensión.' },
+          { value: 60, label: 'Aceptaría si el salario lo justifica, enfocándome en seguir los procesos de liquidación estándar establecidos.' },
+          { value: 80, label: 'Aceptaría con respeto por el reto, aplicando pautas organizacionales de contingencia para estabilizar la situación.' },
+          { value: 100, label: 'Asumo el cargo con entusiasmo, planifico una restructuración global de la entidad y ejecuto decisiones de alto impacto.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Una decisión estratégica tomada por ti resulta errónea y genera pérdidas importantes en tu organización, ¿cómo actúas?',
+        options: [
+          { value: 20, label: 'Busco justificar el resultado responsabilizando a factores del entorno macroeconómico o de mercado.' },
+          { value: 40, label: 'Intento evitar las reuniones de evaluación esperando que la situación se resuelva sin intervención directa.' },
+          { value: 60, label: 'Explico que seguí los lineamientos usuales del área y trato de minimizar las consecuencias visibles.' },
+          { value: 80, label: 'Asumo el error ante mis superiores, propongo un plan de mitigación y busco lecciones operativas del caso.' },
+          { value: 100, label: 'Doy la cara asumiendo la responsabilidad del resultado e implemento de inmediato las medidas correctivas.' }
+        ]
+      },
+      {
+        level: 3,
+        q: 'Si en tu futuro profesional debes ejercer responsabilidades de liderazgo y toma de decisiones corporativas de alto nivel, ¿qué opinas?',
+        options: [
+          { value: 20, label: 'Prefiero roles técnicos sin responsabilidades de gestión de personal ni decisiones estratégicas críticas.' },
+          { value: 40, label: 'Me resultaría incómodo coordinar y guiar el desempeño de grandes grupos de trabajo de forma continua.' },
+          { value: 60, label: 'Podría ejercer mandos intermedios y reportar mis avances a un director general.' },
+          { value: 80, label: 'Me atrae el liderazgo y la oportunidad de guiar proyectos e implementar mejoras operativas importantes.' },
+          { value: 100, label: 'Me apasiona el rol directivo de alto nivel, la toma de decisiones sistémicas y la gestión de planes estratégicos globales.' }
+        ]
+      }
     ]
   }
 ];
